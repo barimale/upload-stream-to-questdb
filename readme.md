@@ -9,7 +9,9 @@ https://www.clamav.net/downloads#otherversions
 app.MapPost("/duration", [DisableFormModelBinding],
         [FileUploadOperation.FileContentType]
     () => "Hello World! (logging duration)");
+
     or
+
 app.MapPost("/duration", 
         [FileUploadOperation.FileContentType, UploadStream.DisableFormModelBinding]
     () => "Hello World! (logging duration)");
