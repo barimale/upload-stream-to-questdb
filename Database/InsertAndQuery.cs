@@ -1,13 +1,15 @@
 ﻿using Domain.Utilities;
+using Questdb.Net;
 using QuestDB;
 
 namespace Database {
     public class InsertAndQuery {
         public async Task Execute(CsvFile<Foo> file, string sessionId) {
             using var sender = Sender.New("http::addr=localhost:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
+            await CreateTableIfNotExists();
             sender.Transaction("measurements");
             try {
-                foreach(var p in file.records) {
+                foreach (var p in file.records) {
                     var parsedDate = DateTimeUtility.yyyyMMddHHmmToDate(p.MessDatum);
 
                     await sender
@@ -27,6 +29,13 @@ namespace Database {
                 sender.Rollback();
                 throw;
             }
+        }
+
+        private static async Task CreateTableIfNotExists() {
+            QuestDBClient client = new QuestDBClient("http://127.0.0.1");
+            var queryApi = client.GetQueryApi();
+            // Create table if not exists
+            await queryApi.QueryRawAsync("CREATE TABLE IF NOT EXISTS 'measurements' ( sessionId SYMBOL capacity 256 CACHE, stationId LONG,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE,  timestamp TIMESTAMP) timestamp (timestamp) PARTITION BY HOUR WAL;");
         }
     }
 }
