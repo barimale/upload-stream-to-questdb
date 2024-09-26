@@ -23,8 +23,6 @@ namespace File.Api.Controllers {
 
         }
 
-        // remove createdAt and isDeleted to increase perf
-
         [HttpGet("data/get")]
         public async Task<IActionResult> GetData([FromHeader(Name = "X-SessionId")] string sessionId, [AsParameters] PaginationRequest request) {
             var query = BuildQuery(request, sessionId);
@@ -103,9 +101,7 @@ namespace File.Api.Controllers {
             builder.Append((whereUsed ? " AND " : " WHERE ") + $" timestamp BETWEEN '{StartDate}' AND '{EndDate}'");
             if(!whereUsed)
                  whereUsed=true;
-            builder.Append((whereUsed ? " AND " : " WHERE ") + " isDeleted = false ");
-            if (!whereUsed)
-                whereUsed = true;
+
 
             builder.Append(" LIMIT " + PageIndex*PageCount + ", " + (PageIndex * PageCount + PageCount));
 

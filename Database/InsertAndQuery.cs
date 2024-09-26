@@ -6,7 +6,6 @@ namespace Database {
     public class InsertAndQuery {
         public async Task Execute(CsvFile<Foo> file, string sessionId) {
             await CreateTableIfNotExists(sessionId);
-            await SoftDeleteRetentionData(sessionId);
 
             using var sender = Sender.New("http::addr=localhost:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
             sender.Transaction(sessionId);
@@ -22,8 +21,6 @@ namespace Database {
                           .Column("TM5_10", p.TMS10)
                           .Column("RF_10", p.RF10)
                           .Column("TD_10", p.TD10)
-                          .Column("created_at", DateTime.UtcNow)
-                          .Column("isDeleted", false)
                           .AtAsync(parsedDate);
                 }
 
@@ -38,14 +35,8 @@ namespace Database {
             QuestDBClient client = new QuestDBClient("http://127.0.0.1");
             var queryApi = client.GetQueryApi();
             // Create table if not exists
-            await queryApi.QueryRawAsync($"CREATE TABLE IF NOT EXISTS '{sessionId}' ( stationId LONG,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE,isDeleted BOOLEAN, created_at TIMESTAMP,  timestamp TIMESTAMP) timestamp (timestamp) PARTITION BY DAY WAL;");
+            await queryApi.QueryRawAsync($"CREATE TABLE IF NOT EXISTS '{sessionId}' ( stationId LONG,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE, timestamp TIMESTAMP) timestamp (timestamp) PARTITION BY DAY WAL;");
         }
 
-        private static async Task SoftDeleteRetentionData(string sessionId) {
-            QuestDBClient client = new QuestDBClient("http://127.0.0.1");
-            var queryApi = client.GetQueryApi();
-            var query = $"UPDATE '{sessionId}' SET isDeleted = true WHERE created_at < '{DateTimeUtility.DateToQuestDbDateString(DateTime.UtcNow.AddDays(-1).ToString("yyyyMMddHHmm"))}'";
-            await queryApi.QueryRawAsync(query);
-        }
     }
 }
