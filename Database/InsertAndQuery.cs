@@ -5,9 +5,10 @@ using QuestDB;
 namespace Database {
     public class InsertAndQuery {
         public async Task Execute(CsvFile<Foo> file, string sessionId) {
-            using var sender = Sender.New("http::addr=localhost:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
             await CreateTableIfNotExists();
             await SoftDeleteRetentionData();
+
+            using var sender = Sender.New("http::addr=localhost:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
             sender.Transaction("measurements");
             try {
                 foreach (var p in file.records) {
