@@ -28,7 +28,7 @@ namespace File.Api.Handlers {
 
                 throw;
             } finally {
-                // DB state | healthy | virus
+                // DB state
             }
 
             return base.Handle(files);
