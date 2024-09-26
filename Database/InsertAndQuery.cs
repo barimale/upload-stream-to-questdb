@@ -1,5 +1,4 @@
 ﻿using Domain.Utilities;
-using Newtonsoft.Json.Linq;
 using Questdb.Net;
 using QuestDB;
 
