@@ -4,6 +4,7 @@
         EXTENSION_OK,
         ANTIVIRUS_OK,
         INGESTION_READY,
-        DELETED
+        DISK_CLEANUP,
+        DB_DELETED
     }
 }

@@ -42,11 +42,13 @@ namespace File.Api.Controllers {
             var extension = new ExtensionHandler(this, Configuration, repository);
             var antivirus = new AntivirusHandler(repository);
             var db = new DBIngestionerHandler(repository);
+            var diskCleanUp = new DiskCleanUpHandler(repository);
 
             uploader
                 .ContinueWith(extension)
                 .ContinueWith(antivirus)
-                .ContinueWith(db);
+                .ContinueWith(db)
+                .ContinueWith(diskCleanUp);
 // filedeletehandler here or background worker and do it after retention time 24 hours together with questdb clean up 
             await uploader.Handle(files);
 
