@@ -39,13 +39,13 @@ namespace Database {
             QuestDBClient client = new QuestDBClient("http://127.0.0.1");
             var queryApi = client.GetQueryApi();
             // Create table if not exists
-            await queryApi.QueryRawAsync("CREATE TABLE IF NOT EXISTS 'measurements' ( sessionId SYMBOL capacity 256 CACHE, stationId LONG,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE,isDeleted BOOLEAN, createdAt TIMESTAMP,  timestamp TIMESTAMP) timestamp (timestamp) PARTITION BY HOUR WAL;");
+            await queryApi.QueryRawAsync("CREATE TABLE IF NOT EXISTS 'measurements' ( sessionId SYMBOL capacity 256 CACHE, stationId LONG,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE,isDeleted BOOLEAN, created_at TIMESTAMP,  timestamp TIMESTAMP) timestamp (timestamp) PARTITION BY HOUR WAL;");
         }
 
         private static async Task SoftDeleteRetentionData() {
             QuestDBClient client = new QuestDBClient("http://127.0.0.1");
             var queryApi = client.GetQueryApi();
-            var query = $"UPDATE 'measurements' SET isDeleted = true WHERE createdAt < '{DateTimeUtility.DateToQuestDbDateString(DateTime.UtcNow.AddDays(-1).ToString("yyyyMMddHHmm"))}'";
+            var query = $"UPDATE 'measurements' SET isDeleted = true WHERE created_at < '{DateTimeUtility.DateToQuestDbDateString(DateTime.UtcNow.AddDays(-1).ToString("yyyyMMddHHmm"))}'";
             await queryApi.QueryRawAsync(query);
         }
     }
