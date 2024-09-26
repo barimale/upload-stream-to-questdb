@@ -55,7 +55,7 @@ namespace File.Api.Controllers {
 
     public class QueryBuilder {
         private const string start =
-            "select StationId,QN,PP_10,TT_10,TM5_10,RF_10,TD_10,timestamp from measurements";
+            "select StationId,QN,PP_10,TT_10,TM5_10,RF_10,TD_10,timestamp from ";
 
         private int PageIndex;
         private int PageCount;
@@ -94,10 +94,12 @@ namespace File.Api.Controllers {
             var whereUsed = false;
             var builder = new StringBuilder();
             builder.Append(start);
-            if (IsHighOnly.HasValue) {
-                builder.Append($" WHERE sessionId = '{SessionId}'");
-                whereUsed = true;
-            }
+            builder.Append($"'{SessionId}'");
+
+            //if (IsHighOnly.HasValue) {
+            //    builder.Append($" WHERE sessionId = '{SessionId}'");
+            //    whereUsed = true;
+            //}
             builder.Append((whereUsed ? " AND " : " WHERE ") + $" timestamp BETWEEN '{StartDate}' AND '{EndDate}'");
             if(!whereUsed)
                  whereUsed=true;
