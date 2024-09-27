@@ -10,3 +10,10 @@ TODOs:
 app.MapPost("/duration", 
         [FileUploadOperation.FileContentType, UploadStream.DisableFormModelBinding]
     () => "Hello World! (logging duration)");
+
+```
+dotnet tool install --global dotnet-ef
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+```
