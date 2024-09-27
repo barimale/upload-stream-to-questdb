@@ -49,7 +49,7 @@ namespace File.Api.Controllers {
                 .ContinueWith(antivirus)
                 .ContinueWith(db)
                 .ContinueWith(diskCleanUp);
-// filedeletehandler here or background worker and do it after retention time 24 hours together with questdb clean up 
+
             await uploader.Handle(files);
 
             if (!ModelState.IsValid)
