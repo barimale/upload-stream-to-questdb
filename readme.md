@@ -6,18 +6,3 @@ Antivirus:
 ```
 https://www.clamav.net/downloads#otherversions
 ```
-TODOs:
-app.MapPost("/duration", 
-        [FileUploadOperation.FileContentType, UploadStream.DisableFormModelBinding]
-    () => "Hello World! (logging duration)");
-
-```
-dotnet tool install --global dotnet-ef
-dotnet add package Microsoft.EntityFrameworkCore.Design
-dotnet ef migrations add InitialCreate
-dotnet ef database update
-```
-
-```
-https://learn.microsoft.com/en-us/aspnet/core/data/ef-mvc/intro?view=aspnetcore-8.0
-```
