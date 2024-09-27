@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System.Configuration;
 
 namespace Infrastructure.Extensions {
     public static class IServiceCollectionExtension {
