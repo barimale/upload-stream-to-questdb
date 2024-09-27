@@ -1,6 +1,7 @@
 ﻿namespace Database {
     public partial class UploadController {
         public class FileModelEntry {
+            public string ID { get; set; }
             public string FileName { get; set; }
             public string FilePath { get; set; }
             public string SessionId { get; set; }
