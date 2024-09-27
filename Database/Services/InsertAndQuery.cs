@@ -1,8 +1,9 @@
-﻿using Domain.Utilities;
+﻿using Database;
+using Domain.Utilities;
 using Questdb.Net;
 using QuestDB;
 
-namespace Database {
+namespace Infrastructure.Services {
     public class InsertAndQuery {
         public async Task Execute(CsvFile<Foo> file, string sessionId) {
             await CreateTableIfNotExists(sessionId);

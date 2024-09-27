@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using static Database.UploadController;
+using static Infrastructure.Entries.UploadController;
 
 namespace Christmas.Secret.Gifter.Infrastructure.EntityConfigurations {
     public class EventEntryConfiguration : IEntityTypeConfiguration<FileModelEntry>

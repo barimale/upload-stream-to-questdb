@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Reflection;
-using static Database.UploadController;
+using static Infrastructure.Entries.UploadController;
 
 namespace Database {
     public class FileDbContext : DbContext {

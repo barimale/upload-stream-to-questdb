@@ -1,4 +1,4 @@
-﻿namespace Database {
+﻿namespace Infrastructure.Entries {
     public partial class UploadController {
         public class FileModelEntry {
             public string Id { get; set; }
