@@ -9,7 +9,6 @@ namespace Infrastructure.Extensions {
             services.AddDbContext<FileDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-
             return services;
         }
 
