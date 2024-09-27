@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.API.SwaggerFilters;
 using System;
+using Infrastructure.Extensions;
 
 namespace File.Api {
     public class Startup {
@@ -21,9 +22,7 @@ namespace File.Api {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc();
 
-            services.AddDbContext<FileDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            services.AddSQLDatabase(Configuration);
 
             services.Configure<FormOptions>(x => {
                 x.ValueLengthLimit = int.MaxValue;
