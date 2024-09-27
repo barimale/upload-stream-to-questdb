@@ -50,6 +50,8 @@ namespace File.Api.Controllers {
                 .ContinueWith(db)
                 .ContinueWith(diskCleanUp);
 
+            // each table is unique having the name equals to sessionId(guid)
+
             await uploader.Handle(files);
 
             if (!ModelState.IsValid)
