@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Entries {
+﻿namespace Infrastructure.Model {
     public enum FileModelState {
         UPLOADED = 0,
         EXTENSION_OK,

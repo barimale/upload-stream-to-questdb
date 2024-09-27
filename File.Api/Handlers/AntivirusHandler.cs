@@ -1,5 +1,5 @@
 ﻿using File.Api.Handlers.Abstraction;
-using Infrastructure.Entries;
+using Infrastructure.Model;
 using System;
 using System.IO;
 using static File.Api.Controllers.UploadController;

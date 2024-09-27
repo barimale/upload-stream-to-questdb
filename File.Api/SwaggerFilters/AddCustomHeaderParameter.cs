@@ -4,22 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Ordering.API.SwaggerFilters
-{
+namespace File.Api.SwaggerFilters {
     public class AddCustomHeaderParameter
-        : IOperationFilter
-    {
+        : IOperationFilter {
         public void Apply(
             OpenApiOperation operation,
-            OperationFilterContext context)
-        {
-            if (operation.Parameters is null)
-            {
+            OperationFilterContext context) {
+            if (operation.Parameters is null) {
                 operation.Parameters = new List<OpenApiParameter>();
             }
 
-            if(!operation.Parameters.Where(p => p.Name == "X-SessionId").Any())
-            {
+            if (!operation.Parameters.Where(p => p.Name == "X-SessionId").Any()) {
                 operation.Parameters.Add(new OpenApiParameter {
                     Name = "X-SessionId",
                     In = ParameterLocation.Header,

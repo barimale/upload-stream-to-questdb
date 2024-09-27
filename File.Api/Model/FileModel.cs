@@ -1,4 +1,4 @@
-﻿using Infrastructure.Entries;
+﻿using Infrastructure.Model;
 using Microsoft.AspNetCore.Http;
 
 namespace File.Api.Controllers {

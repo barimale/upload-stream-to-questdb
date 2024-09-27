@@ -1,8 +1,8 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using Database;
+using Domain;
 using File.Api.Handlers.Abstraction;
-using Infrastructure.Entries;
+using Infrastructure.Model;
 using Infrastructure.Services;
 using System;
 using System.Globalization;

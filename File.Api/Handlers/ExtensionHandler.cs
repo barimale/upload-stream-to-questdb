@@ -1,5 +1,5 @@
 ﻿using File.Api.Handlers.Abstraction;
-using Infrastructure.Entries;
+using Infrastructure.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;

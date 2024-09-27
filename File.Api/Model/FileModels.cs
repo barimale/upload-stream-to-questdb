@@ -1,4 +1,4 @@
-﻿using Infrastructure.Entries;
+﻿using Infrastructure.Model;
 using System.Collections.Generic;
 
 namespace File.Api.Controllers {

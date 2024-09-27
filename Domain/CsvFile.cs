@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration.Attributes;
 
-namespace Database {
+namespace Domain {
     public class CsvFile<T> {
         public List<T> records;
     }
