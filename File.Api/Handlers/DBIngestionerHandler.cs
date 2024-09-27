@@ -3,6 +3,7 @@ using CsvHelper.Configuration;
 using Database;
 using File.Api.Handlers.Abstraction;
 using Infrastructure.Entries;
+using Infrastructure.Services;
 using System;
 using System.Globalization;
 using System.IO;
@@ -12,9 +13,7 @@ using static File.Api.Controllers.UploadController;
 
 namespace File.Api.Handlers {
     class DBIngestionerHandler : AbstractHandler {
-        private readonly IRepository repository;
-        public DBIngestionerHandler(IRepository repository) {
-            this.repository = repository;
+        public DBIngestionerHandler() {
         }
         public override object Handle(FileModels files) {
             try {
@@ -40,8 +39,6 @@ namespace File.Api.Handlers {
             } catch (Exception) {
 
                 throw;
-            } finally {
-                // DB state | healthy | virus
             }
 
             return base.Handle(files);

@@ -1,14 +1,11 @@
-using Database;
 using File.Api.SwaggerFilters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ordering.API.SwaggerFilters;
 using System;
-using Infrastructure.Extensions;
 
 namespace File.Api {
     public class Startup {
@@ -22,14 +19,10 @@ namespace File.Api {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc();
 
-            services.AddSQLDatabase(Configuration);
-
             services.Configure<FormOptions>(x => {
                 x.ValueLengthLimit = int.MaxValue;
                 x.MultipartBodyLengthLimit = Int64.MaxValue; // In case of multipart
             });
-
-            services.AddScoped<IRepository, Repository>();
 
             services.AddSwaggerGen(options =>
             {

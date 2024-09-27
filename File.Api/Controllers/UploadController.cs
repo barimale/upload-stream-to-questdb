@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Database;
 using File.Api.Handlers;
 using File.Api.SwaggerFilters;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +14,9 @@ namespace File.Api.Controllers {
     [Produces("application/json")]
     public partial class UploadController : Controller {
         private readonly IConfiguration Configuration;
-        private readonly IRepository repository;
         public UploadController(
-            IConfiguration configuration,
-            IRepository repository) {
+            IConfiguration configuration) {
             this.Configuration = configuration;
-            this.repository = repository;
         }
 
         [HttpPost("stream")]
@@ -38,11 +34,11 @@ namespace File.Api.Controllers {
                 Path.GetTempPath(),
                 Guid.NewGuid().ToString());
 
-            var uploader = new UploadHandler(this, repository);
-            var extension = new ExtensionHandler(this, Configuration, repository);
-            var antivirus = new AntivirusHandler(repository);
-            var db = new DBIngestionerHandler(repository);
-            var diskCleanUp = new DiskCleanUpHandler(repository);
+            var uploader = new UploadHandler(this);
+            var extension = new ExtensionHandler(this, Configuration);
+            var antivirus = new AntivirusHandler();
+            var db = new DBIngestionerHandler();
+            var diskCleanUp = new DiskCleanUpHandler();
 
             uploader
                 .ContinueWith(extension)

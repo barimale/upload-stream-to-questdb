@@ -1,5 +1,4 @@
-﻿using Database;
-using File.Api.Handlers.Abstraction;
+﻿using File.Api.Handlers.Abstraction;
 using Infrastructure.Entries;
 using System;
 using System.IO;
@@ -7,10 +6,8 @@ using static File.Api.Controllers.UploadController;
 
 namespace File.Api.Handlers {
     class DiskCleanUpHandler : AbstractHandler {
-        private readonly IRepository repository;
 
-        public DiskCleanUpHandler(IRepository repository) {
-            this.repository = repository;
+        public DiskCleanUpHandler() {
         }
         public override object Handle(FileModels files) {
             try {
@@ -28,8 +25,6 @@ namespace File.Api.Handlers {
             } catch (Exception) {
 
                 throw;
-            } finally {
-                // DB state
             }
 
             return base.Handle(files);

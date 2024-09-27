@@ -1,5 +1,4 @@
-﻿using Database;
-using File.Api.Handlers.Abstraction;
+﻿using File.Api.Handlers.Abstraction;
 using Infrastructure.Entries;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -11,14 +10,11 @@ namespace File.Api.Handlers {
     class ExtensionHandler : AbstractHandler {
         private readonly Controller controller;
         private readonly IConfiguration configuration;
-        private readonly IRepository repository;
         public ExtensionHandler(
             Controller controller,
-            IConfiguration configuration,
-            IRepository repository) {
+            IConfiguration configuration) {
             this.controller = controller;
             this.configuration = configuration;
-            this.repository = repository;
         }
         public override object Handle(FileModels files) {
             try {
@@ -33,9 +29,6 @@ namespace File.Api.Handlers {
             } catch (Exception) {
 
                 throw;
-            } finally {
-                // save files to disk and entry to DB
-                // filename | path | sessionId  | state = notcompatible
             }
 
             return base.Handle(files);

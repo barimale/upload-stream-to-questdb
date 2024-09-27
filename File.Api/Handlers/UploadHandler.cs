@@ -1,5 +1,4 @@
-﻿using Database;
-using File.Api.Handlers.Abstraction;
+﻿using File.Api.Handlers.Abstraction;
 using Infrastructure.Entries;
 using Microsoft.AspNetCore.Mvc;
 using System.IO;
@@ -10,11 +9,9 @@ using static File.Api.Controllers.UploadController;
 namespace File.Api.Handlers {
     public class UploadHandler : AbstractHandler {
         private readonly Controller controller;
-        private readonly IRepository repository;
 
-        public UploadHandler(Controller controller, IRepository repository) {
+        public UploadHandler(Controller controller) {
             this.controller = controller;
-            this.repository = repository;
         }
         public async Task Handle(FileModels files) {
 
@@ -31,7 +28,8 @@ namespace File.Api.Handlers {
                         }
                         var entry = new FileModel() {
                             file = x,
-                            FilePath = Path.Join(files.FilePath, x.FileName)
+                            FilePath = Path.Join(files.FilePath, x.FileName),
+                            State = FileModelState.UPLOADED
                         };
                         files.Add(entry);
                     }
@@ -41,9 +39,6 @@ namespace File.Api.Handlers {
             } catch (System.Exception) {
 
                 throw;
-            } finally {
-                // entry to DB
-                // filename | path | sessionId | status
             }
 
             base.Handle(files);

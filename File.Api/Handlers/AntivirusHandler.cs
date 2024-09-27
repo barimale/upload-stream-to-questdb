@@ -1,5 +1,4 @@
-﻿using Database;
-using File.Api.Handlers.Abstraction;
+﻿using File.Api.Handlers.Abstraction;
 using Infrastructure.Entries;
 using System;
 using System.IO;
@@ -7,10 +6,7 @@ using static File.Api.Controllers.UploadController;
 
 namespace File.Api.Handlers {
     class AntivirusHandler : AbstractHandler {
-        private readonly IRepository repository;
-
-        public AntivirusHandler(IRepository repository) {
-            this.repository = repository;
+        public AntivirusHandler() {
         }
         public override object Handle(FileModels files) {
             try {
@@ -28,8 +24,6 @@ namespace File.Api.Handlers {
             } catch (Exception) {
 
                 throw;
-            } finally {
-                // DB state | healthy | virus
             }
 
             return base.Handle(files);
