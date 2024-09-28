@@ -1,10 +1,10 @@
-﻿using Infrastructure.Model;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Http;
+using UploadStreamToQuestDB.Infrastructure.Model;
 
 namespace File.Api.Controllers {
     public partial class UploadController {
-        public class FileModels : List<FileModel> {
-            public string SessionId;
+        public class FileModel {
+            public IFormFile file;
             public string FilePath;
             public FileModelState State;
         }

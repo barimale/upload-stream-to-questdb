@@ -2,13 +2,14 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using File.Api.Handlers;
-using File.Api.SwaggerFilters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using UploadStream;
+using UploadStreamToQuestDB.API.SwaggerFilters;
+using UploadStreamToQuestDB.Application.Handlers;
+using static File.Api.Controllers.UploadController;
 
-namespace File.Api.Controllers {
+namespace UploadStreamToQuestDB.API.Controllers {
 
     [Route("api")]
     [Produces("application/json")]
@@ -16,7 +17,7 @@ namespace File.Api.Controllers {
         private readonly IConfiguration Configuration;
         public UploadController(
             IConfiguration configuration) {
-            this.Configuration = configuration;
+            Configuration = configuration;
         }
 
         [HttpPost("stream")]
@@ -24,12 +25,12 @@ namespace File.Api.Controllers {
         [FileUploadOperation.FileContentType]
         public async Task<IActionResult> ControllerStream() {
 
-            if (!this.Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(this.Request.Headers["X-SessionId"]))
+            if (!Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(Request.Headers["X-SessionId"]))
                 throw new Exception(
                     "SessionId needs to be added to headers. It cannot be empty");
 
             FileModels files = new FileModels();
-            files.SessionId = this.Request.Headers["X-SessionId"];
+            files.SessionId = Request.Headers["X-SessionId"];
             files.FilePath = Path.Join(
                 Path.GetTempPath(),
                 Guid.NewGuid().ToString());
@@ -54,8 +55,8 @@ namespace File.Api.Controllers {
                 return BadRequest();
 
             return Ok(new {
-                SessionId = files.SessionId,
-                FilePath = files.FilePath,
+                files.SessionId,
+                files.FilePath,
                 OperationStatus = files.State.ToString(),
                 Files = files.Select(x => new {
                     x.file.Name,

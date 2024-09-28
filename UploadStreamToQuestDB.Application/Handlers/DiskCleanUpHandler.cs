@@ -1,11 +1,11 @@
-﻿using File.Api.Handlers.Abstraction;
-using Infrastructure.Model;
-using System;
+﻿using System;
 using System.IO;
+using UploadStreamToQuestDB.Application.Handlers.Abstraction;
+using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
 
-namespace File.Api.Handlers {
-    class DiskCleanUpHandler : AbstractHandler {
+namespace UploadStreamToQuestDB.Application.Handlers {
+    public class DiskCleanUpHandler : AbstractHandler {
 
         public DiskCleanUpHandler() {
         }

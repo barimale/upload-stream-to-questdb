@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace File.Api.SwaggerFilters {
+namespace UploadStreamToQuestDB.API.SwaggerFilters {
     public class FileUploadOperation : IOperationFilter {
         /// <summary>
         /// Applies the specified operation.

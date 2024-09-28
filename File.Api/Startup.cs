@@ -1,12 +1,12 @@
-using File.Api.SwaggerFilters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using UploadStreamToQuestDB.API.SwaggerFilters;
 
-namespace File.Api {
+namespace UploadStreamToQuestDB.API {
     public class Startup {
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
@@ -20,11 +20,10 @@ namespace File.Api {
 
             services.Configure<FormOptions>(x => {
                 x.ValueLengthLimit = int.MaxValue;
-                x.MultipartBodyLengthLimit = Int64.MaxValue; // In case of multipart
+                x.MultipartBodyLengthLimit = long.MaxValue; // In case of multipart
             });
 
-            services.AddSwaggerGen(options =>
-            {
+            services.AddSwaggerGen(options => {
                 options.EnableAnnotations();
                 options.OperationFilter<AddCustomHeaderParameter>();
                 options.OperationFilter<FileUploadOperation>();

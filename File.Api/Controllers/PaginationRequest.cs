@@ -1,4 +1,4 @@
-﻿namespace File.Api.Controllers {
+﻿namespace UploadStreamToQuestDB.API.Controllers {
     public class PaginationRequest {
         public PaginationRequest() {
             // intentionally left blank

@@ -1,11 +1,11 @@
-﻿using File.Api.Handlers.Abstraction;
-using Infrastructure.Model;
-using System;
+﻿using System;
 using System.IO;
+using UploadStreamToQuestDB.Application.Handlers.Abstraction;
+using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
 
-namespace File.Api.Handlers {
-    class AntivirusHandler : AbstractHandler {
+namespace UploadStreamToQuestDB.Application.Handlers {
+    public class AntivirusHandler : AbstractHandler {
         public AntivirusHandler() {
         }
         public override object Handle(FileModels files) {

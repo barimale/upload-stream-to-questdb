@@ -1,6 +1,6 @@
 ﻿using static File.Api.Controllers.UploadController;
 
-namespace File.Api.Handlers.Abstraction {
+namespace UploadStreamToQuestDB.Application.Handlers.Abstraction {
     public interface IHandler {
         IHandler ContinueWith(IHandler handler);
 

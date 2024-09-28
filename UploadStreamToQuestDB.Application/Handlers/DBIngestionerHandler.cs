@@ -1,18 +1,15 @@
 ﻿using CsvHelper;
 using CsvHelper.Configuration;
-using Domain;
-using File.Api.Handlers.Abstraction;
-using Infrastructure.Model;
-using Infrastructure.Services;
-using System;
+using UploadStreamToQuestDB.Infrastructure.Services;
 using System.Globalization;
-using System.IO;
-using System.Linq;
 using System.Text;
+using UploadStreamToQuestDB.Application.Handlers.Abstraction;
+using UploadStreamToQuestDB.Domain;
+using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
 
-namespace File.Api.Handlers {
-    class DBIngestionerHandler : AbstractHandler {
+namespace UploadStreamToQuestDB.Application.Handlers {
+    public class DBIngestionerHandler : AbstractHandler {
         public DBIngestionerHandler() {
         }
         public override object Handle(FileModels files) {

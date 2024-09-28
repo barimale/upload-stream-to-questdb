@@ -1,13 +1,13 @@
-﻿using Domain.Utilities;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Questdb.Net;
 using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UploadStreamToQuestDB.Domain.Utilities;
 
-namespace File.Api.Controllers {
+namespace UploadStreamToQuestDB.API.Controllers {
     [Route("api")]
     [Produces("application/json")]
     public class DataController : Controller {
@@ -34,8 +34,9 @@ namespace File.Api.Controllers {
                 firstDate = dataModel.FirstOrDefault()?.Timestamp,
                 lastDate = dataModel.LastOrDefault()?.Timestamp,
                 count = dataModel.ToList().Count,
-                sessionId = sessionId,
-                results = dataModel });
+                sessionId,
+                results = dataModel
+            });
         }
 
         private string BuildQuery(PaginationRequest request, string sessionId) {
@@ -87,11 +88,11 @@ namespace File.Api.Controllers {
             builder.Append(start);
             builder.Append($"'{SessionId}'");
             builder.Append((whereUsed ? " AND " : " WHERE ") + $" timestamp BETWEEN '{StartDate}' AND '{EndDate}'");
-            if(!whereUsed)
-                 whereUsed=true;
+            if (!whereUsed)
+                whereUsed = true;
 
 
-            builder.Append(" LIMIT " + PageIndex*PageCount + ", " + (PageIndex * PageCount + PageCount));
+            builder.Append(" LIMIT " + PageIndex * PageCount + ", " + (PageIndex * PageCount + PageCount));
 
             return builder.ToString();
         }

@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace Domain.Utilities {
+namespace UploadStreamToQuestDB.Domain.Utilities {
     public static class DateTimeUtility {
         public static DateTime yyyyMMddHHmmToDate(string input) {
             DateTime parsedDate = DateTime.ParseExact(input,

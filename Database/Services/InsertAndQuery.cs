@@ -1,9 +1,9 @@
-﻿using Domain;
-using Domain.Utilities;
-using Questdb.Net;
+﻿using Questdb.Net;
 using QuestDB;
+using UploadStreamToQuestDB.Domain;
+using UploadStreamToQuestDB.Domain.Utilities;
 
-namespace Infrastructure.Services {
+namespace UploadStreamToQuestDB.Infrastructure.Services {
     public class InsertAndQuery {
         public async Task Execute(CsvFile<WeatherGermany> file, string sessionId) {
             await CreateTableIfNotExists(sessionId);

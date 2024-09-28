@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration.Attributes;
 
-namespace Domain {
+namespace UploadStreamToQuestDB.Domain {
     public class CsvFile<T> {
         public List<T> records;
     }

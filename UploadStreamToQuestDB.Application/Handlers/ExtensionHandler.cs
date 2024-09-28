@@ -1,13 +1,11 @@
-﻿using File.Api.Handlers.Abstraction;
-using Infrastructure.Model;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.IO;
+using UploadStreamToQuestDB.Application.Handlers.Abstraction;
+using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
 
-namespace File.Api.Handlers {
-    class ExtensionHandler : AbstractHandler {
+namespace UploadStreamToQuestDB.Application.Handlers {
+    public class ExtensionHandler : AbstractHandler {
         private readonly Controller controller;
         private readonly IConfiguration configuration;
         public ExtensionHandler(

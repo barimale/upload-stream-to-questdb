@@ -1,6 +1,6 @@
 ﻿using static File.Api.Controllers.UploadController;
 
-namespace File.Api.Handlers.Abstraction {
+namespace UploadStreamToQuestDB.Application.Handlers.Abstraction {
     // The default chaining behavior can be implemented inside a base handler
     // class.
     public abstract class AbstractHandler : IHandler {

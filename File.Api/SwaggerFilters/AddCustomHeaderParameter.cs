@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace File.Api.SwaggerFilters {
+namespace UploadStreamToQuestDB.API.SwaggerFilters {
     public class AddCustomHeaderParameter
         : IOperationFilter {
         public void Apply(

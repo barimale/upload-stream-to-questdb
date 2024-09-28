@@ -1,12 +1,10 @@
-﻿using File.Api.Handlers.Abstraction;
-using Infrastructure.Model;
-using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using UploadStream;
+using UploadStreamToQuestDB.Application.Handlers.Abstraction;
+using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
 
-namespace File.Api.Handlers {
+namespace UploadStreamToQuestDB.Application.Handlers {
     public class UploadHandler : AbstractHandler {
         private readonly Controller controller;
 
@@ -36,7 +34,7 @@ namespace File.Api.Handlers {
                 });
 
                 files.State = FileModelState.UPLOADED;
-            } catch (System.Exception) {
+            } catch (Exception) {
 
                 throw;
             }
