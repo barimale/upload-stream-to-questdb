@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Database\UploadStreamToQuestDB.Infrastructure.csproj" />
-    <ProjectReference Include="..\Domain\UploadStreamToQuestDB.Domain.csproj" />
+    <ProjectReference Include="..\UploadStreamToQuestDB.Domain\UploadStreamToQuestDB.Domain.csproj" />
+    <ProjectReference Include="..\UploadStreamToQuestDB.Infrastructure\UploadStreamToQuestDB.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

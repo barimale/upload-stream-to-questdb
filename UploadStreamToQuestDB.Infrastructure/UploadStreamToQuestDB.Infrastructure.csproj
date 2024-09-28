@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Domain\UploadStreamToQuestDB.Domain.csproj" />
+    <ProjectReference Include="..\UploadStreamToQuestDB.Domain\UploadStreamToQuestDB.Domain.csproj" />
   </ItemGroup>
 
 </Project>
