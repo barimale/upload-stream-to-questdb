@@ -44,7 +44,6 @@ namespace File.Api.Controllers {
                 .WithDateRange(request.StartDate, request.EndDate)
                 .WithPageIndex(request.PageIndex)
                 .WithPageCount(request.PageSize)
-                .WithIsHighOnly(request.HighOnly)
                 .Build();
 
             return query;
@@ -57,7 +56,6 @@ namespace File.Api.Controllers {
 
         private int PageIndex;
         private int PageCount;
-        private bool? IsHighOnly; // poc
         private string SessionId;
         private string StartDate;
         private string EndDate;
@@ -83,21 +81,11 @@ namespace File.Api.Controllers {
             return this;
         }
 
-        public QueryBuilder WithIsHighOnly(bool? isHighOnly) {
-            IsHighOnly = isHighOnly;
-            return this;
-        }
-
         public string Build() {
             var whereUsed = false;
             var builder = new StringBuilder();
             builder.Append(start);
             builder.Append($"'{SessionId}'");
-
-            //if (IsHighOnly.HasValue) {
-            //    builder.Append($" WHERE sessionId = '{SessionId}'");
-            //    whereUsed = true;
-            //}
             builder.Append((whereUsed ? " AND " : " WHERE ") + $" timestamp BETWEEN '{StartDate}' AND '{EndDate}'");
             if(!whereUsed)
                  whereUsed=true;
