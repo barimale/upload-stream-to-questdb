@@ -23,12 +23,12 @@ namespace File.Api.Handlers {
                 .AsParallel()
                 .WithDegreeOfParallelism(Environment.ProcessorCount)
                 .ForAll(async file => {
-                    var entry = new CsvFile<Foo>();
+                    var entry = new CsvFile<WeatherGermany>();
                     var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
 
                     using (var reader = new StreamReader(file.FilePath))
                     using (var csv = new CsvReader(reader, config)) {
-                        entry.records = csv.GetRecords<Foo>().ToList();
+                        entry.records = csv.GetRecords<WeatherGermany>().ToList();
                     }
 
                     await processor.Execute(entry, files.SessionId);

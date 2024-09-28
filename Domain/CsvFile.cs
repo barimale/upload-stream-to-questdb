@@ -5,7 +5,7 @@ namespace Domain {
         public List<T> records;
     }
 
-    public class Foo {
+    public class WeatherGermany {
         [Name("STATIONS_ID")]
         public int StationId { get; set; }
         [Name("MESS_DATUM")]
