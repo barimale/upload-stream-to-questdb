@@ -57,7 +57,7 @@ namespace File.Api.Controllers {
 
         private int PageIndex;
         private int PageCount;
-        private bool? IsHighOnly;
+        private bool? IsHighOnly; // poc
         private string SessionId;
         private string StartDate;
         private string EndDate;
