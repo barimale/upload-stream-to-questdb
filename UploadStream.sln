@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		produkt_zehn_min_tu_19930428_19991231_00003 — kopia (3).txt = produkt_zehn_min_tu_19930428_19991231_00003 — kopia (3).txt
-		readme.md = readme.md
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UploadStreamToQuestDB.Application", "UploadStreamToQuestDB.Application\UploadStreamToQuestDB.Application.csproj", "{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}"
