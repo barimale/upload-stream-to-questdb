@@ -34,8 +34,7 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
             }
         }
 
-        // something wrong with the lib, connection not disposed or sth
-        // rewrite as described here:
+        // something wrong with the lib
         // https://questdb.io/docs/reference/sql/overview/#questdb-web-console
         private static async Task CreateTableIfNotExists(string sessionId) {
             using (var client = new QuestDBClient("http://127.0.0.1")) {
