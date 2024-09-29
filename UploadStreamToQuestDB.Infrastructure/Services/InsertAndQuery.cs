@@ -7,6 +7,7 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
     public class InsertAndQuery {
         public async Task Execute(CsvFile<WeatherGermany> file, string sessionId) {
             await CreateTableIfNotExists(sessionId);
+            await CreateIndexIfNotExists(sessionId);
 
             using var sender = Sender.New("http::addr=localhost:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
             sender.Transaction(sessionId);
@@ -15,7 +16,7 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
                     var parsedDate = DateTimeUtility.yyyyMMddHHmmToDate(p.MessDatum);
 
                     await sender
-                          .Column("stationId", p.StationId)
+                          .Symbol("stationId", p.StationId.ToString())
                           .Column("QN", p.QN)
                           .Column("PP_10", p.PP10)
                           .Column("TT_10", p.TT10)
@@ -35,8 +36,12 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
         private static async Task CreateTableIfNotExists(string sessionId) {
             QuestDBClient client = new QuestDBClient("http://127.0.0.1");
             var queryApi = client.GetQueryApi();
-            await queryApi.QueryRawAsync($"CREATE TABLE IF NOT EXISTS '{sessionId}' ( stationId LONG,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE, timestamp TIMESTAMP) timestamp (timestamp) PARTITION BY HOUR WAL;");
+            await queryApi.QueryRawAsync($"CREATE TABLE IF NOT EXISTS '{sessionId}' ( stationId SYMBOL,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE, timestamp TIMESTAMP) timestamp (timestamp) PARTITION BY HOUR WAL;");
         }
-
+        private static async Task CreateIndexIfNotExists(string sessionId) {
+            QuestDBClient client = new QuestDBClient("http://127.0.0.1");
+            var queryApi = client.GetQueryApi();
+            var result = await queryApi.QueryRawAsync($"ALTER TABLE '{sessionId}' ALTER COLUMN stationId ADD INDEX;");
+        }
     }
 }
