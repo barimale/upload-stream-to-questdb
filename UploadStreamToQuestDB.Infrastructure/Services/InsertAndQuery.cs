@@ -38,6 +38,7 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
             var queryApi = client.GetQueryApi();
             await queryApi.QueryRawAsync($"CREATE TABLE IF NOT EXISTS '{sessionId}' ( stationId SYMBOL,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE, timestamp TIMESTAMP) timestamp (timestamp) PARTITION BY HOUR WAL;");
         }
+
         private static async Task CreateIndexIfNotExists(string sessionId) {
             QuestDBClient client = new QuestDBClient("http://127.0.0.1");
             var queryApi = client.GetQueryApi();
