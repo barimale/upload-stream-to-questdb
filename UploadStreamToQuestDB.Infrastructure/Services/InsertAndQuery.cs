@@ -6,7 +6,7 @@ using UploadStreamToQuestDB.Domain.Utilities;
 namespace UploadStreamToQuestDB.Infrastructure.Services {
     public class InsertAndQuery {
         public async Task Execute(CsvFile<WeatherGermany> file, string sessionId) {
-            //await CreateTableIfNotExists(sessionId);
+            await CreateTableIfNotExists(sessionId);
 
             using var sender = Sender.New("http::addr=localhost:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
             sender.Transaction(sessionId);

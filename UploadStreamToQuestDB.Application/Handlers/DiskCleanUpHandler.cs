@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using UploadStreamToQuestDB.Application.Handlers.Abstraction;
+﻿using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
 
@@ -11,7 +9,6 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         }
         public override object Handle(FileModels files) {
             try {
-                // put bool switch on off here
                 foreach (var file in files) {
                     try {
                         System.IO.File.Delete(Path.Join(files.FilePath, file.file.FileName));

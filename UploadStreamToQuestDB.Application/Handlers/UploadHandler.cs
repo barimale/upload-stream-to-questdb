@@ -11,7 +11,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         public UploadHandler(Controller controller) {
             this.controller = controller;
         }
-        public async Task Handle(FileModels files) {
+        public async Task<object> Handle(FileModels files) {
 
             try {
                 await controller.Request.StreamFilesModel(async x => {
@@ -37,7 +37,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 throw;
             }
 
-            base.Handle(files);
+            return base.Handle(files);
         }
     }
 }

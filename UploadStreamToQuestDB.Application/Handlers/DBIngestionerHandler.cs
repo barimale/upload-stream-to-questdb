@@ -20,14 +20,14 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
                 var processor = new InsertAndQuery();
 
-                files
+                var filtered = files
                 .Where(p => (
                     isStepActive && p.State == FileModelState.ANTIVIRUS_OK)
                     || (isStepActive == false && p.State == FileModelState.EXTENSION_OK))
-                .ToList()
-                .AsParallel()
-                .WithDegreeOfParallelism(Environment.ProcessorCount)
-                .ForAll(async file => {
+                .ToList();
+
+
+                foreach(var file in filtered) {
                     var entry = new CsvFile<WeatherGermany>();
                     var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
 
@@ -36,9 +36,9 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                         entry.records = csv.GetRecords<WeatherGermany>().ToList();
                     }
 
-                    await processor.Execute(entry, files.SessionId);
-                    file.State = FileModelState.INGESTION_READY;
-                });
+                    processor.Execute(entry, files.SessionId);
+                    files.FirstOrDefault(p => p.file.FileName == file.file.FileName).State = FileModelState.INGESTION_READY;
+                };
             } catch (Exception) {
 
                 throw;
