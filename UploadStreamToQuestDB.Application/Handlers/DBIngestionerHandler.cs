@@ -23,22 +23,30 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 Parallel.ForEach(files.Where(p => (
                     isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
                     || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), file => {
-                        var entry = new CsvFile<WeatherGermany>();
-                        var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
-
-                        using (var reader = new StreamReader(file.FilePath))
-                        using (var csv = new CsvReader(reader, config)) {
-                            entry.records = csv.GetRecords<WeatherGermany>().ToList();
-                        }
-                        // await does not work here
-                        processor.Execute(entry, files.SessionId);
-                        file.State.Add(FileModelState.INGESTION_READY);
+                        Execute(files, file, processor);
                     });
             } catch (Exception) {
                 throw;
             }
 
             return base.Handle(files);
+        }
+
+        private static void Execute(FileModels files, FileModel file, InsertAndQuery processor) {
+            try {
+                var entry = new CsvFile<WeatherGermany>();
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
+
+                using (var reader = new StreamReader(file.FilePath))
+                using (var csv = new CsvReader(reader, config)) {
+                    entry.records = csv.GetRecords<WeatherGermany>().ToList();
+                }
+                // await does not work here
+                processor.Execute(entry, files.SessionId);
+                file.State.Add(FileModelState.INGESTION_READY);
+            } catch (Exception) {
+                file.State.Add(FileModelState.INGESTION_FAILED);
+            }
         }
     }
 }

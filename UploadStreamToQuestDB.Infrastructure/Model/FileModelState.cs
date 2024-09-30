@@ -6,6 +6,7 @@
         ANTIVIRUS_OK,
         ANTIVIRUS_NOT_OK,
         INGESTION_READY,
+        INGESTION_FAILED,
         DISK_CLEANUP,
         DB_DELETED
     }
