@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using UploadStream;
+using UploadStreamToQuestDB.API.CustomAttributes;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 using UploadStreamToQuestDB.Application.Handlers;
 using static File.Api.Controllers.UploadController;
@@ -21,6 +22,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
         }
 
         [HttpPost("stream")]
+        [MultipartFormData]
         [DisableFormModelBinding]
         [FileUploadOperation.FileContentType]
         public async Task<IActionResult> ControllerStream() {
