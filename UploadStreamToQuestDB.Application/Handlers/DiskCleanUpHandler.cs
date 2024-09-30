@@ -15,7 +15,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             return base.Handle(files);
         }
 
-        private static void Execute(FileModels files, FileModel file) {
+        private void Execute(FileModels files, FileModel file) {
             try {
                 System.IO.File.Delete(Path.Join(files.FilePath, file.file.FileName));
                 file.State.Add(FileModelState.DISK_CLEANUP);

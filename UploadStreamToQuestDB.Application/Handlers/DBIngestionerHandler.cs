@@ -28,7 +28,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             return base.Handle(files);
         }
 
-        private static void Execute(FileModels files, FileModel file, InsertAndQuery processor) {
+        private void Execute(FileModels files, FileModel file, InsertAndQuery processor) {
             try {
                 var entry = new CsvFile<WeatherGermany>();
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };

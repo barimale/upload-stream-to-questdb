@@ -24,7 +24,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             return base.Handle(files);
         }
 
-        private static void Execute(FileModel file, string? ext) {
+        private void Execute(FileModel file, string? ext) {
             try {
                 string extension = Path.GetExtension(file.file.FileName);
                 if (!extension.EndsWith(ext)) {
