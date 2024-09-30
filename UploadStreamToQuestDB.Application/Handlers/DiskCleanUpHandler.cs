@@ -8,14 +8,9 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         public DiskCleanUpHandler() {
         }
         public override async Task<object> Handle(FileModels files) {
-            try {
-                Parallel.ForEach(files, file => {
-                    Execute(files, file);
-                });
-            } catch (Exception) {
-
-                throw;
-            }
+            Parallel.ForEach(files, file => {
+                Execute(files, file);
+            });
 
             return base.Handle(files);
         }

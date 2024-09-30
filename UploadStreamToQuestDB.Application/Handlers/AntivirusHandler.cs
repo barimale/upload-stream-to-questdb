@@ -12,19 +12,14 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             this.configuration = configuration;
         }
         public override async Task<object> Handle(FileModels files) {
-            try {
-                bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
-                if (isStepActive == false)
-                    return base.Handle(files);
+            bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
+            if (isStepActive == false)
+                return base.Handle(files);
 
-                var scanner = new AntiVirus.Scanner();
-                Parallel.ForEach(files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK)), file => {
-                    Execute(files, file, scanner);
-                });
-            } catch (Exception) {
-
-                throw;
-            }
+            var scanner = new AntiVirus.Scanner();
+            Parallel.ForEach(files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK)), file => {
+                Execute(files, file, scanner);
+            });
 
             return base.Handle(files);
         }

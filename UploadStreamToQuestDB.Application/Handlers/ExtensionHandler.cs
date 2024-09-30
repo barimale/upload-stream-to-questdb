@@ -15,16 +15,11 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             this.configuration = configuration;
         }
         public override async Task<object> Handle(FileModels files) {
-            try {
-                var ext = configuration["AllowedExtension"];
+            var ext = configuration["AllowedExtension"];
 
-                Parallel.ForEach(files, file => {
-                    Execute(file, ext);
-                });
-            } catch (Exception) {
-
-                throw;
-            }
+            Parallel.ForEach(files, file => {
+                Execute(file, ext);
+            });
 
             return base.Handle(files);
         }
