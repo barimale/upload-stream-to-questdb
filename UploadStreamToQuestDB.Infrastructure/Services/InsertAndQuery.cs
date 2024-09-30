@@ -35,6 +35,8 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
         }
 
         // something wrong with the lib
+        // flow ends prematuraly when method is executed.
+        // follow link below to write your own libraray:
         // https://questdb.io/docs/reference/sql/overview/#questdb-web-console
         private static async Task CreateTableIfNotExists(string sessionId) {
             using (var client = new QuestDBClient("http://127.0.0.1")) {
