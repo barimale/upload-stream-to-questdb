@@ -35,7 +35,6 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                         file.State.Add(FileModelState.INGESTION_READY);
                     });
             } catch (Exception) {
-
                 throw;
             }
 

@@ -29,16 +29,5 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
                 throw;
             }
         }
-
-        // something wrong with the lib
-        // flow ends prematuraly when method is executed.
-        // follow link below to write your own libraray:
-        // https://questdb.io/docs/reference/sql/overview/#questdb-web-console
-        public static async Task CreateTableIfNotExists(string sessionId) {
-            using (var client = new QuestDBClient("http://127.0.0.1")) {
-                var queryApi = client.GetQueryApi();
-                var result = await queryApi.QueryRawAsync($"CREATE TABLE IF NOT EXISTS '{sessionId}' ( stationId SYMBOL,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE, timestamp TIMESTAMP), INDEX (stationId CAPACITY 256) timestamp (timestamp) PARTITION BY HOUR WAL;");
-            }
-        }
     }
 }
