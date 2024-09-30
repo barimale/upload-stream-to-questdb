@@ -30,7 +30,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                         using (var csv = new CsvReader(reader, config)) {
                             entry.records = csv.GetRecords<WeatherGermany>().ToList();
                         }
-
+                        // await does not work here
                         processor.Execute(entry, files.SessionId);
                         file.State.Add(FileModelState.INGESTION_READY);
                     });
