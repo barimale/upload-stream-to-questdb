@@ -12,30 +12,24 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             this.controller = controller;
         }
         public async Task<object> Handle(FileModels files) {
-
-            try {
-                await controller.Request.StreamFilesModel(async x => {
-                    using (var stream = x.OpenReadStream()) {
-                        if (!Directory.Exists(files.FilePath)) {
-                            Directory.CreateDirectory(files.FilePath);
-                        }
-                        using (var fileStream = new FileStream(
-                            Path.Join(files.FilePath, x.FileName),
-                            FileMode.Create)) {
-                            await stream.CopyToAsync(fileStream);
-                        }
-                        var entry = new FileModel() {
-                            file = x,
-                            FilePath = Path.Join(files.FilePath, x.FileName),
-                        };
-                        entry.State.Add(FileModelState.UPLOADED);
-                        files.Add(entry);
+            await controller.Request.StreamFilesModel(async x => {
+                using (var stream = x.OpenReadStream()) {
+                    if (!Directory.Exists(files.FilePath)) {
+                        Directory.CreateDirectory(files.FilePath);
                     }
-                });
-            } catch (Exception) {
-
-                throw;
-            }
+                    using (var fileStream = new FileStream(
+                        Path.Join(files.FilePath, x.FileName),
+                        FileMode.Create)) {
+                        await stream.CopyToAsync(fileStream);
+                    }
+                    var entry = new FileModel() {
+                        file = x,
+                        FilePath = Path.Join(files.FilePath, x.FileName),
+                    };
+                    entry.State.Add(FileModelState.UPLOADED);
+                    files.Add(entry);
+                }
+            });
 
             return base.Handle(files);
         }
