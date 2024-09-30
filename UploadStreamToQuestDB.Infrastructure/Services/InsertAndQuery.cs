@@ -6,9 +6,7 @@ using UploadStreamToQuestDB.Domain.Utilities;
 namespace UploadStreamToQuestDB.Infrastructure.Services {
     public class InsertAndQuery {
         public async Task Execute(CsvFile<WeatherGermany> file, string sessionId) {
-            await CreateTableIfNotExists(sessionId);
-
-            using var sender = Sender.New("http::addr=localhost:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
+            using var sender = Sender.New("http::addr=127.0.0.1:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
             sender.Transaction(sessionId);
             try {
                 foreach (var p in file.records) {
@@ -36,7 +34,7 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
         // flow ends prematuraly when method is executed.
         // follow link below to write your own libraray:
         // https://questdb.io/docs/reference/sql/overview/#questdb-web-console
-        private async Task CreateTableIfNotExists(string sessionId) {
+        public static async Task CreateTableIfNotExists(string sessionId) {
             using (var client = new QuestDBClient("http://127.0.0.1")) {
                 var queryApi = client.GetQueryApi();
                 var result = await queryApi.QueryRawAsync($"CREATE TABLE IF NOT EXISTS '{sessionId}' ( stationId SYMBOL,  QN DOUBLE,  PP_10 DOUBLE,  TT_10 DOUBLE,  TM5_10 DOUBLE,  RF_10 DOUBLE, TD_10 DOUBLE, timestamp TIMESTAMP), INDEX (stationId CAPACITY 256) timestamp (timestamp) PARTITION BY HOUR WAL;");

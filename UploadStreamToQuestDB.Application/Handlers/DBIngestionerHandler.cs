@@ -20,7 +20,9 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
                 var processor = new InsertAndQuery();
 
-                foreach(var file in files.Where(p => (
+                //InsertAndQuery.CreateTableIfNotExists(files.SessionId);
+
+                foreach (var file in files.Where(p => (
                     isStepActive && p.State == FileModelState.ANTIVIRUS_OK)
                     || (isStepActive == false && p.State == FileModelState.EXTENSION_OK))) {
                     var entry = new CsvFile<WeatherGermany>();
