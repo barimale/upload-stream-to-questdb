@@ -20,9 +20,9 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 foreach (var file in files) {
                     string extension = Path.GetExtension(file.file.FileName);
                     if (!extension.EndsWith(configuration["AllowedExtension"])) {
-                        file.State = FileModelState.EXTENSION_NOT_OK;
+                        file.State.Add(FileModelState.EXTENSION_NOT_OK);
                     }else {
-                        file.State = FileModelState.EXTENSION_OK;
+                        file.State.Add(FileModelState.EXTENSION_OK);
                     }
                 }
             } catch (Exception) {

@@ -12,7 +12,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 foreach (var file in files) {
                     try {
                         System.IO.File.Delete(Path.Join(files.FilePath, file.file.FileName));
-                        file.State = FileModelState.DISK_CLEANUP;
+                        file.State.Add(FileModelState.DISK_CLEANUP);
                     } catch (Exception) {
                         continue;
                     }

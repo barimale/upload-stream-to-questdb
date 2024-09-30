@@ -23,8 +23,8 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 //InsertAndQuery.CreateTableIfNotExists(files.SessionId);
 
                 foreach (var file in files.Where(p => (
-                    isStepActive && p.State == FileModelState.ANTIVIRUS_OK)
-                    || (isStepActive == false && p.State == FileModelState.EXTENSION_OK))) {
+                    isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
+                    || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK)))) {
                     var entry = new CsvFile<WeatherGermany>();
                     var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
 
@@ -34,7 +34,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                     }
 
                     processor.Execute(entry, files.SessionId);
-                    file.State = FileModelState.INGESTION_READY;
+                    file.State.Add(FileModelState.INGESTION_READY);
                 };
             } catch (Exception) {
 

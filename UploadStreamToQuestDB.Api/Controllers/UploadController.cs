@@ -58,7 +58,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
                 files.SessionId,
                 files.FilePath,
                 Files = files.Select(x => {
-                    var state = x.State.ToString();
+                    var state = string.Join(",", x.State.Select(p => p.ToString()));
 
                     return new {
                         state,

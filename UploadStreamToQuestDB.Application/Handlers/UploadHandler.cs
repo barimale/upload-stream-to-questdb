@@ -27,8 +27,8 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                         var entry = new FileModel() {
                             file = x,
                             FilePath = Path.Join(files.FilePath, x.FileName),
-                            State = FileModelState.UPLOADED
                         };
+                        entry.State.Add(FileModelState.UPLOADED);
                         files.Add(entry);
                     }
                 });

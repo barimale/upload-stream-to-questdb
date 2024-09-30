@@ -6,7 +6,7 @@ namespace File.Api.Controllers {
         public class FileModel {
             public IFormFile file;
             public string FilePath;
-            public FileModelState State;
+            public List<FileModelState> State = new List<FileModelState>();
         }
     }
 }
