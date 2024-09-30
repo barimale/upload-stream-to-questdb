@@ -17,7 +17,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                     return base.Handle(files);
 
                 var scanner = new AntiVirus.Scanner();
-                Parallel.ForEach(files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK)), async file => {
+                Parallel.ForEach(files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK)), file => {
                     var result = scanner.ScanAndClean(Path.Join(files.FilePath, file.file.FileName));
                     if (result != AntiVirus.ScanResult.VirusNotFound) {
                         file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);

@@ -16,10 +16,11 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         }
         public override async Task<object> Handle(FileModels files) {
             try {
-                // check extensions of streamed files
+                var ext = configuration["AllowedExtension"];
+
                 Parallel.ForEach(files, file => {
                     string extension = Path.GetExtension(file.file.FileName);
-                    if (!extension.EndsWith(configuration["AllowedExtension"])) {
+                    if (!extension.EndsWith(ext)) {
                         file.State.Add(FileModelState.EXTENSION_NOT_OK);
                     } else {
                         file.State.Add(FileModelState.EXTENSION_OK);
