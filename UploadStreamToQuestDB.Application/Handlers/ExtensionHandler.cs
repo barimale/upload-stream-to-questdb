@@ -14,7 +14,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             this.controller = controller;
             this.configuration = configuration;
         }
-        public override object Handle(FileModels files) {
+        public override async Task<object> Handle(FileModels files) {
             try {
                 // check extensions of streamed files
                 foreach (var file in files) {

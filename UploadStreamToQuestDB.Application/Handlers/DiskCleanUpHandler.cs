@@ -7,7 +7,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
 
         public DiskCleanUpHandler() {
         }
-        public override object Handle(FileModels files) {
+        public override async Task<object> Handle(FileModels files) {
             try {
                 foreach (var file in files) {
                     try {

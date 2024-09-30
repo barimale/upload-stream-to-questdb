@@ -10,7 +10,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         public AntivirusHandler(IConfiguration configuration) {
             this.configuration = configuration;
         }
-        public override object Handle(FileModels files) {
+        public override async Task<object> Handle(FileModels files) {
             try {
                 bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
                 if (isStepActive == false)
