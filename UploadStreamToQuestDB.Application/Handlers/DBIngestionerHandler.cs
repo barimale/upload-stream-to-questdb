@@ -22,20 +22,20 @@ namespace UploadStreamToQuestDB.Application.Handlers {
 
                 //InsertAndQuery.CreateTableIfNotExists(files.SessionId);
 
-                foreach (var file in files.Where(p => (
+                Parallel.ForEach(files.Where(p => (
                     isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
-                    || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK)))) {
-                    var entry = new CsvFile<WeatherGermany>();
-                    var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
+                    || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), async file => {
+                        var entry = new CsvFile<WeatherGermany>();
+                        var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
 
-                    using (var reader = new StreamReader(file.FilePath))
-                    using (var csv = new CsvReader(reader, config)) {
-                        entry.records = csv.GetRecords<WeatherGermany>().ToList();
-                    }
+                        using (var reader = new StreamReader(file.FilePath))
+                        using (var csv = new CsvReader(reader, config)) {
+                            entry.records = csv.GetRecords<WeatherGermany>().ToList();
+                        }
 
-                    processor.Execute(entry, files.SessionId);
-                    file.State.Add(FileModelState.INGESTION_READY);
-                };
+                        await processor.Execute(entry, files.SessionId);
+                        file.State.Add(FileModelState.INGESTION_READY);
+                    });
             } catch (Exception) {
 
                 throw;

@@ -17,14 +17,14 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                     return base.Handle(files);
 
                 var scanner = new AntiVirus.Scanner();
-                foreach (var file in files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK))) {
+                Parallel.ForEach(files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK)), async file => {
                     var result = scanner.ScanAndClean(Path.Join(files.FilePath, file.file.FileName));
                     if (result != AntiVirus.ScanResult.VirusNotFound) {
                         file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);
-                    }else {
+                    } else {
                         file.State.Add(FileModelState.ANTIVIRUS_OK);
                     }
-                }
+                });
             } catch (Exception) {
 
                 throw;

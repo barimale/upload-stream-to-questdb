@@ -9,14 +9,13 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         }
         public override async Task<object> Handle(FileModels files) {
             try {
-                foreach (var file in files) {
+                Parallel.ForEach(files, file => {
                     try {
                         System.IO.File.Delete(Path.Join(files.FilePath, file.file.FileName));
                         file.State.Add(FileModelState.DISK_CLEANUP);
                     } catch (Exception) {
-                        continue;
                     }
-                }
+                });
             } catch (Exception) {
 
                 throw;
