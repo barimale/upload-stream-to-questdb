@@ -39,8 +39,8 @@ namespace UploadStreamToQuestDB.API.Controllers {
 
             var uploader = new UploadHandler(this);
             var extension = new ExtensionHandler(this, Configuration);
-            var antivirus = new AntivirusHandler();
-            var db = new DBIngestionerHandler();
+            var antivirus = new AntivirusHandler(Configuration);
+            var db = new DBIngestionerHandler(Configuration);
             var diskCleanUp = new DiskCleanUpHandler();
 
             uploader
@@ -48,8 +48,6 @@ namespace UploadStreamToQuestDB.API.Controllers {
                 .ContinueWith(antivirus)
                 .ContinueWith(db)
                 .ContinueWith(diskCleanUp);
-
-            // each table is unique having the name equals to sessionId(guid)
 
             await uploader.Handle(files);
 
@@ -59,13 +57,17 @@ namespace UploadStreamToQuestDB.API.Controllers {
             return Ok(new {
                 files.SessionId,
                 files.FilePath,
-                OperationStatus = files.State.ToString(),
-                Files = files.Select(x => new {
-                    x.file.Name,
-                    x.file.FileName,
-                    x.file.ContentDisposition,
-                    x.file.ContentType,
-                    x.file.Length
+                Files = files.Select(x => {
+                    var state = x.State.ToString();
+
+                    return new {
+                        state,
+                        x.file.Name,
+                        x.file.FileName,
+                        x.file.ContentDisposition,
+                        x.file.ContentType,
+                        x.file.Length
+                    };
                 })
             });
         }

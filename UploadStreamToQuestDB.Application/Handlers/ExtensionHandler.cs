@@ -19,11 +19,12 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 // check extensions of streamed files
                 foreach (var file in files) {
                     string extension = Path.GetExtension(file.file.FileName);
-                    if (!extension.EndsWith(configuration["AllowedExtension"]))
-                        throw new Exception();
+                    if (!extension.EndsWith(configuration["AllowedExtension"])) {
+                        file.State = FileModelState.EXTENSION_NOT_OK;
+                    }else {
+                        file.State = FileModelState.EXTENSION_OK;
+                    }
                 }
-
-                files.State = FileModelState.EXTENSION_OK;
             } catch (Exception) {
 
                 throw;

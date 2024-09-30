@@ -32,8 +32,6 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                         files.Add(entry);
                     }
                 });
-
-                files.State = FileModelState.UPLOADED;
             } catch (Exception) {
 
                 throw;

@@ -7,16 +7,24 @@ using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
+using Microsoft.Extensions.Configuration;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class DBIngestionerHandler : AbstractHandler {
-        public DBIngestionerHandler() {
+        private readonly IConfiguration configuration;
+        public DBIngestionerHandler(IConfiguration configuration) {
+            this.configuration = configuration;
         }
         public override object Handle(FileModels files) {
             try {
+                bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
                 var processor = new InsertAndQuery();
 
                 files
+                .Where(p => (
+                    isStepActive && p.State == FileModelState.ANTIVIRUS_OK)
+                    || (isStepActive == false && p.State == FileModelState.EXTENSION_OK))
+                .ToList()
                 .AsParallel()
                 .WithDegreeOfParallelism(Environment.ProcessorCount)
                 .ForAll(async file => {
@@ -29,10 +37,8 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                     }
 
                     await processor.Execute(entry, files.SessionId);
+                    file.State = FileModelState.INGESTION_READY;
                 });
-
-                files.State = FileModelState.INGESTION_READY;
-
             } catch (Exception) {
 
                 throw;

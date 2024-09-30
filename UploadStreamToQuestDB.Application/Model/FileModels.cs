@@ -6,7 +6,6 @@ namespace File.Api.Controllers {
         public class FileModels : List<FileModel> {
             public string SessionId;
             public string FilePath;
-            public FileModelState State;
         }
     }
 }
