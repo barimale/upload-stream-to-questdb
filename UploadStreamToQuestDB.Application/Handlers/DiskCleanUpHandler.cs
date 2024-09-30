@@ -10,11 +10,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         public override async Task<object> Handle(FileModels files) {
             try {
                 Parallel.ForEach(files, file => {
-                    try {
-                        System.IO.File.Delete(Path.Join(files.FilePath, file.file.FileName));
-                        file.State.Add(FileModelState.DISK_CLEANUP);
-                    } catch (Exception) {
-                    }
+                    Execute(files, file);
                 });
             } catch (Exception) {
 
@@ -22,6 +18,15 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             }
 
             return base.Handle(files);
+        }
+
+        private static void Execute(FileModels files, FileModel file) {
+            try {
+                System.IO.File.Delete(Path.Join(files.FilePath, file.file.FileName));
+                file.State.Add(FileModelState.DISK_CLEANUP);
+            } catch (Exception) {
+                file.State.Add(FileModelState.DISK_CLEANUP_FAILED);
+            }
         }
     }
 }

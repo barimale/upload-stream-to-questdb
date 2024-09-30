@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AntiVirus;
+using Microsoft.Extensions.Configuration;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
@@ -18,12 +19,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
 
                 var scanner = new AntiVirus.Scanner();
                 Parallel.ForEach(files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK)), file => {
-                    var result = scanner.ScanAndClean(Path.Join(files.FilePath, file.file.FileName));
-                    if (result != AntiVirus.ScanResult.VirusNotFound) {
-                        file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);
-                    } else {
-                        file.State.Add(FileModelState.ANTIVIRUS_OK);
-                    }
+                    Execute(files, file, scanner);
                 });
             } catch (Exception) {
 
@@ -31,6 +27,20 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             }
 
             return base.Handle(files);
+        }
+
+        private static void Execute(FileModels files, FileModel file, Scanner scanner) {
+            try {
+                var result = scanner.ScanAndClean(Path.Join(files.FilePath, file.file.FileName));
+                if (result != AntiVirus.ScanResult.VirusNotFound) {
+                    file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);
+                } else {
+                    file.State.Add(FileModelState.ANTIVIRUS_OK);
+                }
+            } catch (Exception) {
+                file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);
+            }
+
         }
     }
 }

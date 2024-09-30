@@ -8,6 +8,7 @@
         INGESTION_READY,
         INGESTION_FAILED,
         DISK_CLEANUP,
+        DISK_CLEANUP_FAILED,
         DB_DELETED
     }
 }
