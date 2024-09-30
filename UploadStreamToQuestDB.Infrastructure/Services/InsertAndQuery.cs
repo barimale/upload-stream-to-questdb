@@ -29,8 +29,6 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
             } catch (Exception) {
                 sender.Rollback();
                 throw;
-            } finally {
-                // alter index here
             }
         }
 
