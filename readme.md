@@ -11,5 +11,3 @@ https://www.clamav.net/downloads#otherversions
 ```
 ## ToDos
 support zip file.
-
-ConcurrentBag instead of list, await for dbingestioner
