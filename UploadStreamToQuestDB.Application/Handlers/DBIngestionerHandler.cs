@@ -19,11 +19,11 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
             var processor = new InsertAndQuery();
 
-           await Parallel.ForEachAsync(files.Where(p => (
-                isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
-                || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), async (file, token) => {
-                    await Execute(files, file, processor);
-                });
+            Parallel.ForEach(files.Where(p => (
+                 isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
+                 || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), async (file, token) => {
+                     await Execute(files, file, processor);
+                 });
 
             return base.Handle(files);
         }

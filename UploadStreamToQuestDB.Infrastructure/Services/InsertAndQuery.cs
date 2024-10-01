@@ -1,5 +1,4 @@
-﻿using Questdb.Net;
-using QuestDB;
+﻿using QuestDB;
 using UploadStreamToQuestDB.Domain;
 using UploadStreamToQuestDB.Domain.Utilities;
 
