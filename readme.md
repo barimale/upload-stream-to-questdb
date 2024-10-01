@@ -11,5 +11,3 @@ https://www.clamav.net/downloads#otherversions
 ```
 ## ToDos
 support zip file.
-
-https://bulldogjob.pl/readme/iteracja-asynchroniczna-jak-korzystac-z-async-i-await-z-foreach-w-c
