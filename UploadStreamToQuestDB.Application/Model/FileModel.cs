@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using UploadStreamToQuestDB.Infrastructure.Model;
+using System.Collections.Concurrent;
 
 namespace File.Api.Controllers {
     public partial class UploadController {
