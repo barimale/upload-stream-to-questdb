@@ -19,7 +19,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
             var processor = new InsertAndQuery();
 
-            Parallel.ForEach(files.Where(p => (
+            await Parallel.ForEachAsync(files.Where(p => (
                  isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
                  || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), async (file, token) => {
                      await Execute(files, file, processor);
@@ -39,7 +39,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 }
 
                 // await does not work here
-                processor.Execute(entry, files.SessionId);
+                await processor.Execute(entry, files.SessionId);
 
                 file.State.Add(FileModelState.INGESTION_READY);
             } catch (Exception) {
