@@ -4,14 +4,14 @@ using UploadStreamToQuestDB.Domain.Utilities;
 
 namespace UploadStreamToQuestDB.Infrastructure.Services {
     public class InsertAndQuery {
-        public async Task Execute(CsvFile<WeatherGermany> file, string sessionId) {
+        public void Execute(CsvFile<WeatherGermany> file, string sessionId) {
             using var sender = Sender.New("http::addr=127.0.0.1:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
             sender.Transaction(sessionId);
             try {
                 foreach (var p in file.records) {
                     var parsedDate = DateTimeUtility.yyyyMMddHHmmToDate(p.MessDatum);
 
-                    await sender
+                         sender
                           .Symbol("stationId", p.StationId.ToString())
                           .Column("QN", p.QN)
                           .Column("PP_10", p.PP10)
@@ -19,10 +19,10 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
                           .Column("TM5_10", p.TMS10)
                           .Column("RF_10", p.RF10)
                           .Column("TD_10", p.TD10)
-                          .AtAsync(parsedDate);
+                          .At(parsedDate);
                 }
 
-                await sender.CommitAsync();
+                sender.Commit();
             } catch (Exception) {
                 sender.Rollback();
                 throw;

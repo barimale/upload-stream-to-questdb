@@ -21,14 +21,14 @@ namespace UploadStreamToQuestDB.Application.Handlers {
 
             Parallel.ForEach(files.Where(p => (
                 isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
-                || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), async (file) => {
-                    await Execute(files, file, processor);
+                || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), (file) => {
+                    Execute(files, file, processor);
                 });
 
             return base.Handle(files);
         }
 
-        private async Task Execute(FileModels files, FileModel file, InsertAndQuery processor) {
+        private void Execute(FileModels files, FileModel file, InsertAndQuery processor) {
             try {
                 var entry = new CsvFile<WeatherGermany>();
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
