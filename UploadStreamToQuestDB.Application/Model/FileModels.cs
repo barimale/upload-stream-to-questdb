@@ -3,7 +3,7 @@ using UploadStreamToQuestDB.Infrastructure.Model;
 
 namespace File.Api.Controllers {
     public partial class UploadController {
-        public class FileModels : List<FileModel> {
+        public class FileModels : ConcurrentBag<FileModel> {
             public string SessionId;
             public string FilePath;
         }
