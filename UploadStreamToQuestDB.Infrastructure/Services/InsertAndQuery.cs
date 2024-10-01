@@ -10,7 +10,7 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
             try {
                 foreach (var p in file.records) {
                     var parsedDate = DateTimeUtility.yyyyMMddHHmmToDate(p.MessDatum);
-                    
+
                     await sender
                           .Symbol("stationId", p.StationId.ToString())
                           .Column("QN", p.QN)
