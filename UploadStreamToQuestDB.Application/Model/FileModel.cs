@@ -7,10 +7,9 @@ namespace File.Api.Controllers {
             public IFormFile file;
             public string FilePath;
             public List<FileModelState> State = new List<FileModelState>();
-       public string GetState()
-       {
-           return string.Join(",", this.State.Select(p => p.ToString()));
-       }
+            public string GetState() {
+                return string.Join(",", this.State.Select(p => p.ToString()));
+            }
         }
     }
 }
