@@ -11,3 +11,4 @@ https://www.clamav.net/downloads#otherversions
 ```
 ## ToDos
 support zip file.
+https://learn.microsoft.com/pl-pl/dotnet/api/system.io.compression.gzipstream?view=net-8.0
