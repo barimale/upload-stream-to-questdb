@@ -14,7 +14,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             this.controller = controller;
             this.configuration = configuration;
         }
-        public override async Task<object> Handle(FileModels files) {
+        public override async Task<object> Handle(FileModelsInput files) {
             var ext = configuration["AllowedExtension"];
 
             Parallel.ForEach(files, file => {

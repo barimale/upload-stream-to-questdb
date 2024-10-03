@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UploadStreamToQuestDB.API.Controllers {
+namespace UploadStreamToQuestDB.Application.Model {
     public partial class DataController {
         public class WeatherDataResult {
             public string StationId { get; set; }

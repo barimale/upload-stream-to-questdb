@@ -11,7 +11,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         public UploadHandler(Controller controller) {
             this.controller = controller;
         }
-        public async Task<object> Handle(FileModels files) {
+        public async Task<object> Handle(FileModelsInput files) {
             await controller.Request.StreamFilesModel(async x => {
                 using (var stream = x.OpenReadStream()) {
                     if (!Directory.Exists(files.FilePath)) {

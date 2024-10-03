@@ -11,7 +11,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         public AntivirusHandler(IConfiguration configuration) {
             this.configuration = configuration;
         }
-        public override async Task<object> Handle(FileModels files) {
+        public override async Task<object> Handle(FileModelsInput files) {
             bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
             if (isStepActive == false)
                 return base.Handle(files);
@@ -24,7 +24,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             return base.Handle(files);
         }
 
-        private void Execute(FileModels files, FileModel file, Scanner scanner) {
+        private void Execute(FileModelsInput files, FileModel file, Scanner scanner) {
             try {
                 var result = scanner.ScanAndClean(Path.Join(files.FilePath, file.file.FileName));
                 if (result != ScanResult.VirusNotFound) {

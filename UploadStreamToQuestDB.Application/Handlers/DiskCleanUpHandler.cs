@@ -7,7 +7,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
 
         public DiskCleanUpHandler() {
         }
-        public override async Task<object> Handle(FileModels files) {
+        public override async Task<object> Handle(FileModelsInput files) {
             Parallel.ForEach(files, file => {
                 Execute(files, file);
             });
@@ -15,7 +15,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             return base.Handle(files);
         }
 
-        private void Execute(FileModels files, FileModel file) {
+        private void Execute(FileModelsInput files, FileModel file) {
             try {
                 System.IO.File.Delete(Path.Join(files.FilePath, file.file.FileName));
                 file.State.Add(FileModelState.DISK_CLEANUP);

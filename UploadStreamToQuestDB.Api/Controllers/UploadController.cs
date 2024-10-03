@@ -31,7 +31,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
                 throw new Exception(
                     "SessionId needs to be added to headers. It cannot be empty");
 
-            FileModels files = new FileModels();
+            FileModelsInput files = new FileModelsInput();
             files.SessionId = Request.Headers["X-SessionId"];
             files.FilePath = Path.Join(
                 Path.GetTempPath(),

@@ -15,7 +15,7 @@ namespace UploadStreamToQuestDB.Application.Handlers.Abstraction {
             return handler;
         }
 
-        public virtual Task<object> Handle(FileModels files) {
+        public virtual Task<object> Handle(FileModelsInput files) {
             if (_nextHandler != null) {
                 return _nextHandler.Handle(files);
             } else {
