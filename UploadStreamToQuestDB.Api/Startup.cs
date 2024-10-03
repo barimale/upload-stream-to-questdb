@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Questdb.Net;
 using System;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 
@@ -17,6 +18,7 @@ namespace UploadStreamToQuestDB.API {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc();
+            services.AddQuestDb(Configuration["QuestDbAddress"]);
 
             services.Configure<FormOptions>(x => {
                 x.ValueLengthLimit = int.MaxValue;

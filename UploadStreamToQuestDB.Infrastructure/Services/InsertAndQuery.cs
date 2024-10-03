@@ -4,8 +4,17 @@ using UploadStreamToQuestDB.Domain.Utilities;
 
 namespace UploadStreamToQuestDB.Infrastructure.Services {
     public class InsertAndQuery {
+        private readonly string address;
+        private readonly string port;
+        private readonly string settings;
+        public InsertAndQuery(string address, string port, string settings) {
+            this.address = address;
+            this.port = port;
+            this.settings = settings;
+        }
+
         public void Execute(CsvFile<WeatherGermany> file, string sessionId) {
-            using var sender = Sender.New("http::addr=127.0.0.1:9000;username=admin;password=quest;auto_flush=on;auto_flush_rows=80000;");
+            using var sender = Sender.New($"http::addr={this.address}:{this.port};{this.settings};");
             sender.Transaction(sessionId);
             try {
                 foreach (var p in file.records) {

@@ -11,16 +11,15 @@ namespace UploadStreamToQuestDB.API.Controllers {
     [Route("api")]
     [Produces("application/json")]
     public partial class DataController : Controller {
-        private readonly IConfiguration Configuration;
-        public DataController(IConfiguration configuration) {
-                this.Configuration = configuration;
+        private readonly IQuestDBClient questDbClient;
+        public DataController(IQuestDBClient questDbClient) {
+                this.questDbClient = questDbClient;
         }
 
         [HttpGet("data/get")]
         public async Task<IActionResult> GetData([FromHeader(Name = "X-SessionId")] string sessionId, [AsParameters] PaginationRequest request) {
             var query = BuildQuery(request, sessionId);
-            QuestDBClient client = new QuestDBClient("http://127.0.0.1");
-            var queryApi = client.GetQueryApi();
+            var queryApi = questDbClient.GetQueryApi();
             var dataModel = await queryApi.QueryEnumerableAsync<WeatherDataResult>(query);
 
             return Ok(new {
