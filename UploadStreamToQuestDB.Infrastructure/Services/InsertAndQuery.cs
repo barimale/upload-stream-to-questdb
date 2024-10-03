@@ -14,7 +14,7 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
         }
 
         public void Execute(CsvFile<WeatherGermany> file, string sessionId) {
-            using var sender = Sender.New($"http::addr={this.address}:{this.port};{this.settings};");
+            using var sender = Sender.New($"http::addr={this.address}:{this.port};{this.settings}");
             sender.Transaction(sessionId);
             try {
                 foreach (var p in file.records) {
