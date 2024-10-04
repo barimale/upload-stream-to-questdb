@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using UploadStream;
 using UploadStreamToQuestDB.API.CustomAttributes;
+using UploadStreamToQuestDB.API.Exceptions;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 using UploadStreamToQuestDB.Application.Handlers;
 using static File.Api.Controllers.UploadController;
@@ -28,8 +29,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
         public async Task<IActionResult> ControllerStream() {
 
             if (!Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(Request.Headers["X-SessionId"]))
-                throw new Exception(
-                    "X-SessionId needs to be added to headers. It cannot be empty");
+                throw new XSessionIdException();
 
             FileModelsInput files = new FileModelsInput();
             files.SessionId = Request.Headers["X-SessionId"];

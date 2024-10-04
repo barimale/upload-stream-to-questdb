@@ -4,6 +4,7 @@ using Questdb.Net;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using UploadStreamToQuestDB.API.Exceptions;
 using UploadStreamToQuestDB.Domain.Utilities.QueryUtilities;
 using static UploadStreamToQuestDB.Domain.DataController;
 
@@ -19,8 +20,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
         [HttpGet("data/get")]
         public async Task<IActionResult> GetData([FromHeader(Name = "X-SessionId")] string sessionId, [AsParameters] PaginationRequest request) {
             if (string.IsNullOrEmpty(sessionId))
-                throw new Exception(
-                    "X-SessionId needs to be added to headers. It cannot be empty");
+                throw new XSessionIdException();
 
             var query = BuildQuery(request, sessionId);
             var queryApi = questDbClient.GetQueryApi();
