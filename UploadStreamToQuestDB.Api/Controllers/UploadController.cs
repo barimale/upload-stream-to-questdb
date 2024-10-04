@@ -44,10 +44,10 @@ namespace UploadStreamToQuestDB.API.Controllers {
             var diskCleanUp = new DiskCleanUpHandler();
 
             uploader
-                .ContinueWith(extension)
-                .ContinueWith(antivirus)
-                .ContinueWith(db)
-                .ContinueWith(diskCleanUp);
+                .HandleNext(extension)
+                .HandleNext(antivirus)
+                .HandleNext(db)
+                .HandleNext(diskCleanUp);
 
             await uploader.Handle(files);
 
