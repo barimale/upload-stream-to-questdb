@@ -1,17 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Infrastructure.Model;
 using static File.Api.Controllers.UploadController;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class ExtensionHandler : AbstractHandler {
-        private readonly Controller controller;
         private readonly IConfiguration configuration;
         public ExtensionHandler(
-            Controller controller,
             IConfiguration configuration) {
-            this.controller = controller;
             this.configuration = configuration;
         }
         public override async Task<object> Handle(FileModelsInput files) {
