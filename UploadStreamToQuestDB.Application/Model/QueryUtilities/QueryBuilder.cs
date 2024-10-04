@@ -42,7 +42,6 @@ namespace UploadStreamToQuestDB.Application.Model.QueryUtilities {
             if (!whereUsed)
                 whereUsed = true;
 
-
             builder.Append(" LIMIT " + PageIndex * PageCount + ", " + (PageIndex * PageCount + PageCount));
 
             return builder.ToString();
