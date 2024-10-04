@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Questdb.Net;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using UploadStreamToQuestDB.Application.Model.QueryUtilities;
@@ -18,6 +19,10 @@ namespace UploadStreamToQuestDB.API.Controllers {
 
         [HttpGet("data/get")]
         public async Task<IActionResult> GetData([FromHeader(Name = "X-SessionId")] string sessionId, [AsParameters] PaginationRequest request) {
+            if (string.IsNullOrEmpty(sessionId))
+                throw new Exception(
+                    "X-SessionId needs to be added to headers. It cannot be empty");
+
             var query = BuildQuery(request, sessionId);
             var queryApi = questDbClient.GetQueryApi();
             var dataModel = await queryApi.QueryEnumerableAsync<WeatherDataResult>(query);

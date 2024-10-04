@@ -29,7 +29,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
 
             if (!Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(Request.Headers["X-SessionId"]))
                 throw new Exception(
-                    "SessionId needs to be added to headers. It cannot be empty");
+                    "X-SessionId needs to be added to headers. It cannot be empty");
 
             FileModelsInput files = new FileModelsInput();
             files.SessionId = Request.Headers["X-SessionId"];
