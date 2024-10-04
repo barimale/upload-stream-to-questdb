@@ -9,6 +9,7 @@ using UploadStreamToQuestDB.API.CustomAttributes;
 using UploadStreamToQuestDB.API.Exceptions;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 using UploadStreamToQuestDB.Application.Handlers;
+using UploadStreamToQuestDB.Infrastructure.Services;
 using static File.Api.Controllers.UploadController;
 
 namespace UploadStreamToQuestDB.API.Controllers {
@@ -17,9 +18,13 @@ namespace UploadStreamToQuestDB.API.Controllers {
     [Produces("application/json")]
     public partial class UploadController : Controller {
         private readonly IConfiguration Configuration;
+        private readonly IQueryIngestionerService _queryIngestionerService;
+
         public UploadController(
-            IConfiguration configuration) {
+            IConfiguration configuration,
+            IQueryIngestionerService queryIngestionerService) {
             Configuration = configuration;
+            _queryIngestionerService = queryIngestionerService;
         }
 
         [HttpPost("stream")]
@@ -41,7 +46,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
             var uploader = new UploadHandler(this);
             var extension = new ExtensionHandler(this, Configuration);
             var antivirus = new AntivirusHandler(Configuration);
-            var db = new DBIngestionerHandler(Configuration);
+            var db = new DBIngestionerHandler(Configuration, _queryIngestionerService);
             var diskCleanUp = new DiskCleanUpHandler();
 
             uploader

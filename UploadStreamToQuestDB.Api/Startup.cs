@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Questdb.Net;
 using UploadStreamToQuestDB.API.SwaggerFilters;
+using UploadStreamToQuestDB.Infrastructure;
 
 namespace UploadStreamToQuestDB.API {
     public class Startup {
@@ -17,6 +18,7 @@ namespace UploadStreamToQuestDB.API {
         public void ConfigureServices(IServiceCollection services) {
             services.AddMvc();
             services.AddQuestDb(Configuration["ReadQuestDbAddress"]);
+            services.AddInfrastructureDependencies(Configuration);
 
             services.Configure<FormOptions>(x => {
                 x.ValueLengthLimit = int.MaxValue;

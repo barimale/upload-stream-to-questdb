@@ -12,26 +12,26 @@ using Microsoft.Extensions.Configuration;
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class DBIngestionerHandler : AbstractHandler {
         private readonly IConfiguration configuration;
-        public DBIngestionerHandler(IConfiguration configuration) {
+        private readonly IQueryIngestionerService _queryIngestionerService;
+        public DBIngestionerHandler(
+            IConfiguration configuration,
+            IQueryIngestionerService queryIngestionerService) {
             this.configuration = configuration;
+            this._queryIngestionerService = queryIngestionerService;
         }
         public override async Task<object> Handle(FileModelsInput files) {
             bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
-            var processor = new QueryIngestionerService(
-                configuration["QuestDbAddress"],
-                configuration["QuestDbPort"],
-                configuration["QuestDbSettings"]);
 
             Parallel.ForEach(files.Where(p => (
                 isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
                 || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), (file) => {
-                    Execute(files, file, processor);
+                    Execute(files, file, _queryIngestionerService);
                 });
 
             return base.Handle(files);
         }
 
-        private void Execute(FileModelsInput files, FileModel file, QueryIngestionerService processor) {
+        private void Execute(FileModelsInput files, FileModel file, IQueryIngestionerService processor) {
             try {
                 var entry = new CsvFile<WeatherGermany>();
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
