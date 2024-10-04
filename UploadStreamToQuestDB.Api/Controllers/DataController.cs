@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Questdb.Net;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using UploadStreamToQuestDB.API.Exceptions;
@@ -14,7 +13,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
     public partial class DataController : Controller {
         private readonly IQuestDBClient questDbClient;
         public DataController(IQuestDBClient questDbClient) {
-                this.questDbClient = questDbClient;
+            this.questDbClient = questDbClient;
         }
 
         [HttpGet("data/get")]
