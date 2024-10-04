@@ -17,7 +17,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         }
         public override async Task<object> Handle(FileModelsInput files) {
             bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
-            var processor = new InsertAndQuery(
+            var processor = new QueryIngestionerService(
                 configuration["QuestDbAddress"],
                 configuration["QuestDbPort"],
                 configuration["QuestDbSettings"]);
@@ -31,7 +31,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             return base.Handle(files);
         }
 
-        private void Execute(FileModelsInput files, FileModel file, InsertAndQuery processor) {
+        private void Execute(FileModelsInput files, FileModel file, QueryIngestionerService processor) {
             try {
                 var entry = new CsvFile<WeatherGermany>();
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };

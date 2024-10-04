@@ -1,4 +1,4 @@
-﻿namespace UploadStreamToQuestDB.Application.Model {
+﻿namespace UploadStreamToQuestDB.Domain {
     public partial class DataController {
         public class WeatherDataResult {
             public string StationId { get; set; }

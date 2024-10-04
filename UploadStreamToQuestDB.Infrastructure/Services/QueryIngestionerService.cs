@@ -3,11 +3,11 @@ using UploadStreamToQuestDB.Domain;
 using UploadStreamToQuestDB.Domain.Utilities;
 
 namespace UploadStreamToQuestDB.Infrastructure.Services {
-    public class InsertAndQuery {
+    public class QueryIngestionerService {
         private readonly string address;
         private readonly string port;
         private readonly string settings;
-        public InsertAndQuery(string address, string port, string settings) {
+        public QueryIngestionerService(string address, string port, string settings) {
             this.address = address;
             this.port = port;
             this.settings = settings;

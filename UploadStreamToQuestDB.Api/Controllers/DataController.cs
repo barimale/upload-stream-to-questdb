@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Questdb.Net;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using UploadStreamToQuestDB.Application.Model.QueryUtilities;
-using static UploadStreamToQuestDB.Application.Model.DataController;
+using UploadStreamToQuestDB.Domain.Utilities.QueryUtilities;
+using static UploadStreamToQuestDB.Domain.DataController;
 
 namespace UploadStreamToQuestDB.API.Controllers {
     [Route("api")]
