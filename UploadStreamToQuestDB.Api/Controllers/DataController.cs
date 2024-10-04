@@ -27,10 +27,10 @@ namespace UploadStreamToQuestDB.API.Controllers {
             var dataModel = await queryApi.QueryEnumerableAsync<WeatherDataResult>(query);
 
             return Ok(new {
+                sessionId,
+                count = dataModel.ToList().Count,
                 firstDate = dataModel.FirstOrDefault()?.Timestamp,
                 lastDate = dataModel.LastOrDefault()?.Timestamp,
-                count = dataModel.ToList().Count,
-                sessionId,
                 results = dataModel
             });
         }

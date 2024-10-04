@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using UploadStreamToQuestDB.Domain.Utilities;
 
 namespace UploadStreamToQuestDB.Domain.Utilities.QueryUtilities {
     public class QueryBuilder {
@@ -8,13 +7,13 @@ namespace UploadStreamToQuestDB.Domain.Utilities.QueryUtilities {
 
         private int PageIndex;
         private int PageCount;
-        private string SessionId;
-        private string StartDate;
-        private string EndDate;
+        private string SessionId = string.Empty;
+        private string StartDate = string.Empty;
+        private string EndDate = string.Empty;
 
-        public QueryBuilder WithDateRange(string value, string value2) {
-            StartDate = DateTimeUtility.DateToQuestDbDateString(value);
-            EndDate = DateTimeUtility.DateToQuestDbDateString(value2);
+        public QueryBuilder WithDateRange(string start, string end) {
+            StartDate = DateTimeUtility.DateToQuestDbDateString(start);
+            EndDate = DateTimeUtility.DateToQuestDbDateString(end);
             return this;
         }
 

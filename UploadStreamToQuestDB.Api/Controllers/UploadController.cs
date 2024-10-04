@@ -31,11 +31,12 @@ namespace UploadStreamToQuestDB.API.Controllers {
             if (!Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(Request.Headers["X-SessionId"]))
                 throw new XSessionIdException();
 
-            FileModelsInput files = new FileModelsInput();
-            files.SessionId = Request.Headers["X-SessionId"];
-            files.FilePath = Path.Join(
-                Path.GetTempPath(),
-                Guid.NewGuid().ToString());
+            FileModelsInput files = new FileModelsInput() {
+                SessionId = Request.Headers["X-SessionId"],
+                FilePath = Path.Join(
+                    Path.GetTempPath(),
+                    Guid.NewGuid().ToString())
+            };
 
             var uploader = new UploadHandler(this);
             var extension = new ExtensionHandler(this, Configuration);
