@@ -21,7 +21,6 @@ packages/
 
 # Visual Studio cache/options directory
 .vs/
-wwwroot/
 
 # .NET Core
 artifacts/
