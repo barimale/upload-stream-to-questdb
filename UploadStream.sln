@@ -20,7 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UploadStreamToQuestDB.Infra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo Data", "Demo Data", "{C99590E4-7F50-4A10-9565-BA2EE91E9DD2}"
 	ProjectSection(SolutionItems) = preProject
-		produkt_zehn_min_tu_19930428_19991231_00003 — kopia (3).txt = produkt_zehn_min_tu_19930428_19991231_00003 — kopia (3).txt
+		produkt_zehn_min_tu_19930428_19991231_00003.txt = produkt_zehn_min_tu_19930428_19991231_00003.txt
 	EndProjectSection
 EndProject
 Global
