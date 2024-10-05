@@ -36,6 +36,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 var entry = new CsvFile<WeatherGermany>();
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
                     Delimiter = ";",
+                    Comment = '%',
                     Encoding = Encoding.UTF8,
                     HasHeaderRecord = true };
 
