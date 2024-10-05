@@ -2,7 +2,7 @@
 
 namespace UploadStreamToQuestDB.Domain {
     public class CsvFile<T> {
-        public List<T> records;
+        public List<T> records = new List<T>();
     }
 
     public class WeatherGermany {

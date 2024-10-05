@@ -34,7 +34,10 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         private void Execute(FileModelsInput files, FileModel file, IQueryIngestionerService processor) {
             try {
                 var entry = new CsvFile<WeatherGermany>();
-                var config = new CsvConfiguration(CultureInfo.InvariantCulture) { Delimiter = ";", Encoding = Encoding.UTF8 };
+                var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
+                    Delimiter = ";",
+                    Encoding = Encoding.UTF8,
+                    HasHeaderRecord = true };
 
                 using (var reader = new StreamReader(file.FilePath))
                 using (var csv = new CsvReader(reader, config)) {
