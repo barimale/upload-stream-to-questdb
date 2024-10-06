@@ -46,7 +46,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
             var uploader = new UploadHandler(this);
             var extension = new ExtensionHandler(Configuration);
             var antivirus = new AntivirusHandler(Configuration);
-            var db = new DBIngestionerHandler(Configuration, _queryIngestionerService);
+            var db = new DataIngestionerHandler(Configuration, _queryIngestionerService);
             var diskCleanUp = new DiskCleanUpHandler();
 
             uploader

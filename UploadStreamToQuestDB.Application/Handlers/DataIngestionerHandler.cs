@@ -10,10 +10,10 @@ using static File.Api.Controllers.UploadController;
 using Microsoft.Extensions.Configuration;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
-    public class DBIngestionerHandler : AbstractHandler {
+    public class DataIngestionerHandler : AbstractHandler {
         private readonly IConfiguration configuration;
         private readonly IQueryIngestionerService _queryIngestionerService;
-        public DBIngestionerHandler(
+        public DataIngestionerHandler(
             IConfiguration configuration,
             IQueryIngestionerService queryIngestionerService) {
             this.configuration = configuration;
