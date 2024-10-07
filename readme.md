@@ -9,3 +9,4 @@ docker run -p 9000:9000 -p 9009:9009 -p 8812:8812 -p 9003:9003 questdb/questdb:8
 dotnet add package nClam --version 9.0.0
 https://www.clamav.net/downloads#otherversions
 ```
+https://dotnettutorials.net/lesson/logging-using-serilog-in-asp-net-core-web-api/
