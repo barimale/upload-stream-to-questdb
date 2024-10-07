@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Questdb.Net;
+using Serilog;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 using UploadStreamToQuestDB.Infrastructure;
 
@@ -30,6 +31,13 @@ namespace UploadStreamToQuestDB.API {
                 options.OperationFilter<AddCustomHeaderParameter>();
                 options.OperationFilter<FileUploadOperation>();
             });
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration)
+                .Enrich.FromLogContext()
+                .WriteTo.Console()
+                .WriteTo.File("logs/MyAppLog.txt")
+                .CreateLogger();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
@@ -41,6 +49,9 @@ namespace UploadStreamToQuestDB.API {
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
+
+            var builder = WebApplication.CreateBuilder();
+            builder.Host.UseSerilog();
         }
     }
 }

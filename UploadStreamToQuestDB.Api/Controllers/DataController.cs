@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Questdb.Net;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,19 +13,31 @@ namespace UploadStreamToQuestDB.API.Controllers {
     [Produces("application/json")]
     public partial class DataController : Controller {
         private readonly IQuestDBClient questDbClient;
-        public DataController(IQuestDBClient questDbClient) {
+        private readonly ILogger<DataController> _logger;
+
+        public DataController(IQuestDBClient questDbClient,
+            ILogger<DataController> logger) {
             this.questDbClient = questDbClient;
+            this._logger = logger;
         }
 
         [HttpGet("data/get")]
         public async Task<IActionResult> GetData([FromHeader(Name = "X-SessionId")] string sessionId, [AsParameters] PaginationRequest request) {
+            _logger.LogInformation("Controller get-data is started.");
             if (string.IsNullOrEmpty(sessionId))
                 throw new XSessionIdException();
 
+            _logger.LogInformation($"X-SessionId is equal to {sessionId}.");
             var query = BuildQuery(request, sessionId);
-            var queryApi = questDbClient.GetQueryApi();
-            var dataModel = await queryApi.QueryEnumerableAsync<WeatherDataResult>(query);
+            _logger.LogInformation($"Query is equal to {query}.");
 
+            _logger.LogInformation("QueryApi is created.");
+            var queryApi = questDbClient.GetQueryApi();
+            _logger.LogInformation("Data is downloading.");
+            var dataModel = await queryApi.QueryEnumerableAsync<WeatherDataResult>(query);
+            _logger.LogInformation("Data is downloaded.");
+
+            _logger.LogInformation("Controller get-data is ended.");
             return Ok(new {
                 sessionId,
                 count = dataModel.ToList().Count,

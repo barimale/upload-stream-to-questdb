@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using UploadStream;
 using UploadStreamToQuestDB.API.CustomAttributes;
 using UploadStreamToQuestDB.API.Exceptions;
@@ -19,12 +20,15 @@ namespace UploadStreamToQuestDB.API.Controllers {
     public partial class UploadController : Controller {
         private readonly IConfiguration Configuration;
         private readonly IQueryIngestionerService _queryIngestionerService;
+        private readonly ILogger<UploadController> _logger;
 
         public UploadController(
             IConfiguration configuration,
-            IQueryIngestionerService queryIngestionerService) {
+            IQueryIngestionerService queryIngestionerService,
+            ILogger<UploadController> logger) {
             Configuration = configuration;
             _queryIngestionerService = queryIngestionerService;
+            _logger = logger;
         }
 
         [HttpPost("stream")]
@@ -32,7 +36,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
         [DisableFormModelBinding]
         [FileUploadOperation.FileContentType]
         public async Task<IActionResult> ControllerStream() {
-
+            _logger.LogInformation("Controller upload stream is started.");
             if (!Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(Request.Headers["X-SessionId"]))
                 throw new XSessionIdException();
 
@@ -42,6 +46,8 @@ namespace UploadStreamToQuestDB.API.Controllers {
                     Path.GetTempPath(),
                     Guid.NewGuid().ToString())
             };
+            _logger.LogInformation($"X-SessionId is equal to {files.SessionId}");
+            _logger.LogInformation($"FilePath is equal to {files.FilePath}");
 
             var uploader = new UploadHandler(this);
             var extension = new ExtensionHandler(Configuration);
@@ -49,17 +55,22 @@ namespace UploadStreamToQuestDB.API.Controllers {
             var db = new DataIngestionerHandler(Configuration, _queryIngestionerService);
             var diskCleanUp = new DiskCleanUpHandler();
 
+            _logger.LogInformation($"Handler is defined.");
             uploader
                 .HandleNext(extension)
                 .HandleNext(antivirus)
                 .HandleNext(db)
                 .HandleNext(diskCleanUp);
 
+            _logger.LogInformation($"Handler is started.");
             await uploader.Handle(files);
+            _logger.LogInformation($"Handler is executed.");
 
             if (!ModelState.IsValid)
                 return BadRequest();
+            _logger.LogInformation($"Model is valid.");
 
+            _logger.LogInformation("Controller upload stream is ended.");
             return Ok(new {
                 files.SessionId,
                 files.FilePath,
