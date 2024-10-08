@@ -36,7 +36,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
         [DisableFormModelBinding]
         [FileUploadOperation.FileContentType]
         public async Task<IActionResult> ControllerStream() {
-            _logger.LogInformation("Controller upload stream is started.");
+            _logger.LogInformation("Controller upload stream starts.");
             if (!Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(Request.Headers["X-SessionId"]))
                 throw new XSessionIdException();
 
@@ -62,7 +62,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
                 .HandleNext(db)
                 .HandleNext(diskCleanUp);
 
-            _logger.LogInformation($"Handler is started.");
+            _logger.LogInformation($"Handler starts.");
             await uploader.Handle(files);
             _logger.LogInformation($"Handler is executed.");
 
