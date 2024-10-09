@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Questdb.Net;
 using Serilog;
+using System;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 using UploadStreamToQuestDB.Infrastructure;
 
@@ -17,6 +18,10 @@ namespace UploadStreamToQuestDB.API {
         public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services) {
+            services.AddProblemDetails(options =>
+                   options.CustomizeProblemDetails = ctx =>
+                       ctx.ProblemDetails.Extensions.Add("nodeId", Environment.MachineName));
+
             services.AddMvc();
             services.AddQuestDb(Configuration["ReadQuestDbAddress"]);
             services.AddInfrastructureDependencies(Configuration);
