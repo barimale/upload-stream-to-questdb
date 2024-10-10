@@ -2,7 +2,6 @@
 using UploadStreamToQuestDB.Infrastructure.Model;
 
 namespace File.Api.Controllers {
-    public partial class UploadController {
         public class FileModel {
             public IFormFile file;
             public string FilePath;
@@ -11,5 +10,4 @@ namespace File.Api.Controllers {
                 return string.Join(",", this.State.Select(p => p.ToString()));
             }
         }
-    }
 }
