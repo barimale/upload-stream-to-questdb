@@ -37,3 +37,4 @@ artifacts/
 node_modules/
 
 *.snk
+/UploadStreamToQuestDB.Api/logs
