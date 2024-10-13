@@ -1,6 +1,6 @@
-﻿using UploadStreamToQuestDB.Application.Handlers.Abstraction;
+﻿using File.Api.Controllers;
+using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Infrastructure.Model;
-using static File.Api.Controllers.UploadController;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class DiskCleanUpHandler : AbstractHandler {

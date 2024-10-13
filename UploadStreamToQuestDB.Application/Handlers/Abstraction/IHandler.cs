@@ -1,4 +1,4 @@
-﻿using static File.Api.Controllers.UploadController;
+﻿using File.Api.Controllers;
 
 namespace UploadStreamToQuestDB.Application.Handlers.Abstraction {
     public interface IHandler {

@@ -1,8 +1,8 @@
 ﻿using AntiVirus;
+using File.Api.Controllers;
 using Microsoft.Extensions.Configuration;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Infrastructure.Model;
-using static File.Api.Controllers.UploadController;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class AntivirusHandler : AbstractHandler {

@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using File.Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,6 @@ using UploadStreamToQuestDB.API.Exceptions;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 using UploadStreamToQuestDB.Application.Handlers;
 using UploadStreamToQuestDB.Infrastructure.Services;
-using static File.Api.Controllers.UploadController;
 
 namespace UploadStreamToQuestDB.API.Controllers {
 

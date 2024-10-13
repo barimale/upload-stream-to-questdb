@@ -5,8 +5,8 @@ using Questdb.Net;
 using System.Linq;
 using System.Threading.Tasks;
 using UploadStreamToQuestDB.API.Exceptions;
+using UploadStreamToQuestDB.Domain;
 using UploadStreamToQuestDB.Domain.Utilities.QueryUtilities;
-using static UploadStreamToQuestDB.Domain.DataController;
 
 namespace UploadStreamToQuestDB.API.Controllers {
     [Route("api")]

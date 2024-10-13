@@ -6,8 +6,8 @@ using System.Text;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 using UploadStreamToQuestDB.Infrastructure.Model;
-using static File.Api.Controllers.UploadController;
 using Microsoft.Extensions.Configuration;
+using File.Api.Controllers;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class DataIngestionerHandler : AbstractHandler {
