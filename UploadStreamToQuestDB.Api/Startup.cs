@@ -39,9 +39,6 @@ namespace UploadStreamToQuestDB.API {
 
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(Configuration)
-                .Enrich.FromLogContext()
-                .WriteTo.Console()
-                .WriteTo.File("logs/MyAppLog.txt")
                 .CreateLogger();
         }
 
