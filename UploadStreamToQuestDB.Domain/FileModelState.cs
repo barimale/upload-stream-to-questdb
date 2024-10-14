@@ -1,4 +1,4 @@
-﻿namespace UploadStreamToQuestDB.Infrastructure.Model {
+﻿namespace UploadStreamToQuestDB.Domain {
     public enum FileModelState {
         UPLOADED = 0,
         EXTENSION_OK,

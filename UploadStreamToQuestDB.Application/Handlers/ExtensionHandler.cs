@@ -1,7 +1,6 @@
-﻿using File.Api.Controllers;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
-using UploadStreamToQuestDB.Infrastructure.Model;
+using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class ExtensionHandler : AbstractHandler {

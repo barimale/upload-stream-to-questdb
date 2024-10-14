@@ -1,8 +1,7 @@
-﻿using File.Api.Controllers;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using UploadStream;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
-using UploadStreamToQuestDB.Infrastructure.Model;
+using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class UploadHandler : AbstractHandler {
