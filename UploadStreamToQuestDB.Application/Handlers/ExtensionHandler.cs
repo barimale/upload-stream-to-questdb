@@ -11,6 +11,9 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         }
         public override async Task<object> Handle(FileModelsInput files) {
             var ext = configuration["AllowedExtension"];
+            if (string.IsNullOrEmpty(ext)) {
+                throw new Exception("AllowedExtension ext cannot be null or empty.");
+            }
 
             Parallel.ForEach(files, file => {
                 Execute(file, ext);
@@ -19,16 +22,16 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             return base.Handle(files);
         }
 
-        private void Execute(FileModel file, string? ext) {
+        private void Execute(FileModel input, string ext) {
             try {
-                string extension = Path.GetExtension(file.file.FileName);
+                string extension = Path.GetExtension(input.file.FileName);
                 if (!extension.EndsWith(ext)) {
-                    file.State.Add(FileModelState.EXTENSION_NOT_OK);
+                    input.State.Add(FileModelState.EXTENSION_NOT_OK);
                 } else {
-                    file.State.Add(FileModelState.EXTENSION_OK);
+                    input.State.Add(FileModelState.EXTENSION_OK);
                 }
             } catch (Exception) {
-                file.State.Add(FileModelState.EXTENSION_NOT_OK);
+                input.State.Add(FileModelState.EXTENSION_NOT_OK);
             }
 
         }
