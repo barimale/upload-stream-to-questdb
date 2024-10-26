@@ -11,7 +11,7 @@ using UploadStreamToQuestDB.Domain.Utilities.QueryUtilities;
 namespace UploadStreamToQuestDB.API.Controllers {
     [Route("api")]
     [Produces("application/json")]
-    public partial class DataController : Controller {
+    public class DataController : Controller {
         private readonly IQuestDBClient questDbClient;
         private readonly ILogger<DataController> _logger;
 
