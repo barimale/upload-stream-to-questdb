@@ -17,7 +17,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
 
     [Route("api")]
     [Produces("application/json")]
-    public partial class UploadController : Controller {
+    public class UploadController : Controller {
         private readonly IConfiguration Configuration;
         private readonly IQueryIngestionerService _queryIngestionerService;
         private readonly ILogger<UploadController> _logger;
