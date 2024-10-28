@@ -18,17 +18,11 @@ namespace UploadStreamToQuestDB.API.Controllers {
     [Route("api")]
     [Produces("application/json")]
     public class UploadController : Controller {
-        private readonly IConfiguration Configuration;
-        private readonly IQueryIngestionerService _queryIngestionerService;
         private readonly ILogger<UploadController> _logger;
         private readonly IUploadPipeline _pipeline;
         public UploadController(
-            IConfiguration configuration,
-            IQueryIngestionerService queryIngestionerService,
             ILogger<UploadController> logger,
             IUploadPipeline pipeline) {
-            Configuration = configuration;
-            _queryIngestionerService = queryIngestionerService;
             _logger = logger;
             _pipeline = pipeline;
         }
