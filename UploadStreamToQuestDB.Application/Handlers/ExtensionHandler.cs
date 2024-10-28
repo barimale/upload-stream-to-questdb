@@ -3,7 +3,7 @@ using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
-    public class ExtensionHandler : AbstractHandler {
+    public class ExtensionHandler : AbstractHandler, IExtensionHandler {
         private readonly IConfiguration configuration;
         public ExtensionHandler(
             IConfiguration configuration) {

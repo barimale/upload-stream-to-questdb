@@ -2,7 +2,7 @@
 using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
-    public class DiskCleanUpHandler : AbstractHandler {
+    public class DiskCleanUpHandler : AbstractHandler, IDiskCleanUpHandler {
 
         public DiskCleanUpHandler() {
             // intentionally left blank

@@ -25,6 +25,7 @@ namespace UploadStreamToQuestDB.API {
             services.AddMvc();
             services.AddQuestDb(Configuration["ReadQuestDbAddress"]);
             services.AddInfrastructureDependencies(Configuration);
+            services.AddApplicationDependencies(Configuration);
 
             services.Configure<FormOptions>(x => {
                 x.ValueLengthLimit = int.MaxValue;

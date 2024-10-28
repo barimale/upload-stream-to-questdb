@@ -4,7 +4,7 @@ using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
-    public class AntivirusHandler : AbstractHandler {
+    public class AntivirusHandler : AbstractHandler, IAntivirusHandler {
         private readonly IConfiguration configuration;
 
         public AntivirusHandler(IConfiguration configuration) {

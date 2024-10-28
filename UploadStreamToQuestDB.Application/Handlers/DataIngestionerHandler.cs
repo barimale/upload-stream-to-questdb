@@ -8,7 +8,7 @@ using UploadStreamToQuestDB.Domain;
 using Microsoft.Extensions.Configuration;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
-    public class DataIngestionerHandler : AbstractHandler {
+    public class DataIngestionerHandler : AbstractHandler, IDataIngestionerHandler {
         private readonly IConfiguration configuration;
         private readonly IQueryIngestionerService _queryIngestionerService;
         public DataIngestionerHandler(
@@ -36,7 +36,8 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                     Delimiter = ";",
                     Comment = '%',
                     Encoding = Encoding.UTF8,
-                    HasHeaderRecord = true };
+                    HasHeaderRecord = true
+                };
 
                 using (var reader = new StreamReader(file.FilePath))
                 using (var csv = new CsvReader(reader, config)) {

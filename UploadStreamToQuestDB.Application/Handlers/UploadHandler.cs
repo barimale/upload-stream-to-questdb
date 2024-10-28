@@ -4,10 +4,10 @@ using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
-    public class UploadHandler : AbstractHandler {
-        private readonly Controller controller;
+    public class UploadHandler : AbstractHandler, IUploadHandler {
+        private Controller controller;
 
-        public UploadHandler(Controller controller) {
+        public void SetUploadHandler(Controller controller) {
             this.controller = controller;
         }
         public async Task<object> Handle(FileModelsInput files) {

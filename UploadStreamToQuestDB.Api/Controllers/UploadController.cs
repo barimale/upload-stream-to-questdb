@@ -9,7 +9,7 @@ using UploadStream;
 using UploadStreamToQuestDB.API.CustomAttributes;
 using UploadStreamToQuestDB.API.Exceptions;
 using UploadStreamToQuestDB.API.SwaggerFilters;
-using UploadStreamToQuestDB.Application.Handlers;
+using UploadStreamToQuestDB.Application;
 using UploadStreamToQuestDB.Domain;
 using UploadStreamToQuestDB.Infrastructure.Services;
 
@@ -21,14 +21,16 @@ namespace UploadStreamToQuestDB.API.Controllers {
         private readonly IConfiguration Configuration;
         private readonly IQueryIngestionerService _queryIngestionerService;
         private readonly ILogger<UploadController> _logger;
-
+        private readonly IUploadPipeline _pipeline;
         public UploadController(
             IConfiguration configuration,
             IQueryIngestionerService queryIngestionerService,
-            ILogger<UploadController> logger) {
+            ILogger<UploadController> logger,
+            IUploadPipeline pipeline) {
             Configuration = configuration;
             _queryIngestionerService = queryIngestionerService;
             _logger = logger;
+            _pipeline = pipeline;
         }
 
         [HttpPost("stream")]
@@ -49,22 +51,13 @@ namespace UploadStreamToQuestDB.API.Controllers {
             _logger.LogInformation($"X-SessionId is equal to {files.SessionId}");
             _logger.LogInformation($"FilePath is equal to {files.FilePath}");
 
-            var uploader = new UploadHandler(this);
-            var extension = new ExtensionHandler(Configuration);
-            var antivirus = new AntivirusHandler(Configuration);
-            var db = new DataIngestionerHandler(Configuration, _queryIngestionerService);
-            var diskCleanUp = new DiskCleanUpHandler();
+            _logger.LogInformation($"Pipeline is initializing.");
+            _pipeline.Initialize(this);
+            _logger.LogInformation($"Pipeline is initialized.");
 
-            _logger.LogInformation($"Handler is defined.");
-            uploader
-                .HandleNext(extension)
-                .HandleNext(antivirus)
-                .HandleNext(db)
-                .HandleNext(diskCleanUp);
-
-            _logger.LogInformation($"Handler starts.");
-            await uploader.Handle(files);
-            _logger.LogInformation($"Handler is executed.");
+            _logger.LogInformation($"Pipeline starts.");
+            await _pipeline.Run(files);
+            _logger.LogInformation($"Pipeline is executed.");
 
             if (!ModelState.IsValid)
                 return BadRequest();
