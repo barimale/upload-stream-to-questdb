@@ -23,13 +23,13 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             Parallel.ForEach(files.Where(p => (
                 isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
                 || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), (file) => {
-                    Execute(files, file, _queryIngestionerService);
+                    Execute(files, file);
                 });
 
             return base.Handle(files);
         }
 
-        private void Execute(FileModelsInput files, FileModel file, IQueryIngestionerService processor) {
+        private void Execute(FileModelsInput files, FileModel file) {
             try {
                 var entry = new CsvFile<WeatherGermany>();
                 var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
@@ -43,7 +43,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                     entry.records = csv.GetRecords<WeatherGermany>().ToList();
                 }
 
-                processor.Execute(entry, files.SessionId);
+                _queryIngestionerService.Execute(entry, files.SessionId);
 
                 file.State.Add(FileModelState.INGESTION_READY);
             } catch (Exception) {

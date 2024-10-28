@@ -5,6 +5,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
     public class DiskCleanUpHandler : AbstractHandler {
 
         public DiskCleanUpHandler() {
+            // intentionally left blank
         }
         public override async Task<object> Handle(FileModelsInput files) {
             Parallel.ForEach(files, file => {

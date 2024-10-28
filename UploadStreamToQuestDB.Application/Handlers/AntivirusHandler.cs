@@ -15,16 +15,16 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             if (isStepActive == false)
                 return base.Handle(files);
 
-            var scanner = new Scanner();
             Parallel.ForEach(files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK)), file => {
-                Execute(files, file, scanner);
+                Execute(files, file);
             });
 
             return base.Handle(files);
         }
 
-        private void Execute(FileModelsInput files, FileModel file, Scanner scanner) {
+        private void Execute(FileModelsInput files, FileModel file) {
             try {
+                var scanner = new Scanner();
                 var result = scanner.ScanAndClean(Path.Join(files.FilePath, file.file.FileName));
                 if (result != ScanResult.VirusNotFound) {
                     file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);
