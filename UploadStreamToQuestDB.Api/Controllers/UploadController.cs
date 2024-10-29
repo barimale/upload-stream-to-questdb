@@ -30,7 +30,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
         [DisableFormModelBinding]
         [FileUploadOperation.FileContentType]
         public async Task<IActionResult> ControllerStream() {
-            _logger.LogInformation("Controller upload stream starts.");
+            _logger.LogTrace("Controller upload stream starts.");
             if (!Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(Request.Headers["X-SessionId"]))
                 throw new XSessionIdException();
 
@@ -40,22 +40,22 @@ namespace UploadStreamToQuestDB.API.Controllers {
                     Path.GetTempPath(),
                     Guid.NewGuid().ToString())
             };
-            _logger.LogInformation($"X-SessionId is equal to {files.SessionId}");
-            _logger.LogInformation($"FilePath is equal to {files.FilePath}");
+            _logger.LogTrace($"X-SessionId is equal to {files.SessionId}");
+            _logger.LogTrace($"FilePath is equal to {files.FilePath}");
 
-            _logger.LogInformation($"Pipeline is initializing.");
+            _logger.LogTrace($"Pipeline is initializing.");
             _pipeline.Initialize(this);
-            _logger.LogInformation($"Pipeline is initialized.");
+            _logger.LogTrace($"Pipeline is initialized.");
 
-            _logger.LogInformation($"Pipeline starts.");
+            _logger.LogTrace($"Pipeline starts.");
             await _pipeline.Run(files);
-            _logger.LogInformation($"Pipeline is executed.");
+            _logger.LogTrace($"Pipeline is executed.");
 
             if (!ModelState.IsValid)
                 return BadRequest();
-            _logger.LogInformation($"Model is valid.");
+            _logger.LogTrace($"Model is valid.");
 
-            _logger.LogInformation("Controller upload stream is ended.");
+            _logger.LogTrace("Controller upload stream is ended.");
             return Ok(new {
                 files.SessionId,
                 files.FilePath,

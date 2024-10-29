@@ -28,20 +28,20 @@ namespace UploadStreamToQuestDB.Application {
 
         public void Initialize(Controller controller) {
             uploadHandler.SetController(controller);
-            logger.LogInformation("Controller for UploadHandler is set.");
-            logger.LogInformation("Start configure pipeline.");
+            logger.LogTrace("Controller for UploadHandler is set.");
+            logger.LogTrace("Start configure pipeline.");
             uploadHandler
                .HandleNext(extensionHandler)
                .HandleNext(antivirusHandler)
                .HandleNext(dataIngestionerHandler)
                .HandleNext(diskCleanUpHandler);
-            logger.LogInformation("Pipeline configuration is ended.");
+            logger.LogTrace("Pipeline configuration is ended.");
         }
 
         public async Task Run(FileModelsInput files) {
-            logger.LogInformation("Start handling.");
+            logger.LogTrace("Start handling.");
             await uploadHandler.Handle(files);
-            logger.LogInformation("Handling is ended.");
+            logger.LogTrace("Handling is ended.");
         }
     }
 }

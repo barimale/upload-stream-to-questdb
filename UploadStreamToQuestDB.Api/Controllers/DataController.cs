@@ -23,21 +23,21 @@ namespace UploadStreamToQuestDB.API.Controllers {
 
         [HttpGet("data/get")]
         public async Task<IActionResult> GetData([FromHeader(Name = "X-SessionId")] string sessionId, [AsParameters] PaginationRequest request) {
-            _logger.LogInformation("Controller get-data starts.");
+            _logger.LogTrace("Controller get-data starts.");
             if (string.IsNullOrEmpty(sessionId))
                 throw new XSessionIdException();
 
-            _logger.LogInformation($"X-SessionId is equal to {sessionId}.");
+            _logger.LogTrace($"X-SessionId is equal to {sessionId}.");
             var query = BuildQuery(request, sessionId);
-            _logger.LogInformation($"Query is equal to {query}.");
+            _logger.LogTrace($"Query is equal to {query}.");
 
             var queryApi = questDbClient.GetQueryApi();
-            _logger.LogInformation("QueryApi is created.");
-            _logger.LogInformation("Data is downloading.");
+            _logger.LogTrace("QueryApi is created.");
+            _logger.LogTrace("Data is downloading.");
             var dataModel = await queryApi.QueryEnumerableAsync<WeatherDataResult>(query);
-            _logger.LogInformation("Data is downloaded.");
+            _logger.LogTrace("Data is downloaded.");
 
-            _logger.LogInformation("Controller get-data is ended.");
+            _logger.LogTrace("Controller get-data is ended.");
             return Ok(new {
                 sessionId,
                 count = dataModel.ToList().Count,
