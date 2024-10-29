@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using UploadStream;
 using UploadStreamToQuestDB.API.CustomAttributes;
@@ -11,7 +10,6 @@ using UploadStreamToQuestDB.API.Exceptions;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 using UploadStreamToQuestDB.Application;
 using UploadStreamToQuestDB.Domain;
-using UploadStreamToQuestDB.Infrastructure.Services;
 
 namespace UploadStreamToQuestDB.API.Controllers {
 
