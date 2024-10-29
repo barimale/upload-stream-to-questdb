@@ -27,7 +27,7 @@ namespace UploadStreamToQuestDB.Application {
         }
 
         public void Initialize(Controller controller) {
-            uploadHandler.SetControlller(controller);
+            uploadHandler.SetController(controller);
             logger.LogInformation("Controller for UploadHandler is set.");
             logger.LogInformation("Start configure pipeline.");
             uploadHandler

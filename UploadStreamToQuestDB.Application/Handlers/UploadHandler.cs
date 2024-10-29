@@ -7,7 +7,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
     public class UploadHandler : AbstractHandler, IUploadHandler {
         private Controller controller;
 
-        public void SetControlller(Controller controller) {
+        public void SetController(Controller controller) {
             this.controller = controller;
         }
         public async Task<object> Handle(FileModelsInput files) {
