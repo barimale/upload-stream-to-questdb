@@ -31,10 +31,10 @@ namespace UploadStreamToQuestDB.Application {
             logger.LogTrace("Controller for UploadHandler is set.");
             logger.LogTrace("Start configure pipeline.");
             uploadHandler
-               .HandleNext(extensionHandler)
-               .HandleNext(antivirusHandler)
-               .HandleNext(dataIngestionerHandler)
-               .HandleNext(diskCleanUpHandler);
+               .SetNext(extensionHandler)
+               .SetNext(antivirusHandler)
+               .SetNext(dataIngestionerHandler)
+               .SetNext(diskCleanUpHandler);
             logger.LogTrace("Pipeline configuration is ended.");
         }
 

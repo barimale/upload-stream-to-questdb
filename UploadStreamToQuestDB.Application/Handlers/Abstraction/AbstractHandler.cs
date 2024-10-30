@@ -4,7 +4,7 @@ namespace UploadStreamToQuestDB.Application.Handlers.Abstraction {
     public abstract class AbstractHandler : IHandler {
         private IHandler _nextHandler;
 
-        public IHandler HandleNext(IHandler handler) {
+        public IHandler SetNext(IHandler handler) {
             _nextHandler = handler;
 
             return handler;

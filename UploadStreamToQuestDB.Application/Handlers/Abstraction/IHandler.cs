@@ -2,7 +2,7 @@
 
 namespace UploadStreamToQuestDB.Application.Handlers.Abstraction {
     public interface IHandler {
-        IHandler HandleNext(IHandler handler);
+        IHandler SetNext(IHandler handler);
 
         Task<object> Handle(FileModelsInput files);
     }
