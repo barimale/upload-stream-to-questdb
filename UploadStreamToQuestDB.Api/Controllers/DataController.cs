@@ -5,6 +5,7 @@ using Questdb.Net;
 using System.Linq;
 using System.Threading.Tasks;
 using UploadStreamToQuestDB.API.Exceptions;
+using UploadStreamToQuestDB.API.Model;
 using UploadStreamToQuestDB.Domain;
 using UploadStreamToQuestDB.Domain.Utilities.QueryUtilities;
 

@@ -1,4 +1,4 @@
-﻿namespace UploadStreamToQuestDB.Domain {
+﻿namespace UploadStreamToQuestDB.API.Model {
     public class PaginationRequest {
         public PaginationRequest() {
             // intentionally left blank
