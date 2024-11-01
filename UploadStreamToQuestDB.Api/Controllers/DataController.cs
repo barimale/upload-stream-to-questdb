@@ -23,7 +23,9 @@ namespace UploadStreamToQuestDB.API.Controllers {
         }
 
         [HttpGet("data/get")]
-        public async Task<IActionResult> GetData([FromHeader(Name = "X-SessionId")] string sessionId, [AsParameters] PaginationRequest request) {
+        public async Task<IActionResult> GetData(
+            [FromHeader(Name = "X-SessionId")] string sessionId,
+            [AsParameters] PaginationRequest request) {
             _logger.LogTrace("Controller get-data starts.");
             if (string.IsNullOrEmpty(sessionId))
                 throw new XSessionIdException();
