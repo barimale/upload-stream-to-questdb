@@ -8,8 +8,7 @@
             int pageIndex,
             int pageSize,
             string startDate,
-            string endDate,
-            bool? highOnly = null) {
+            string endDate) {
             PageIndex = pageIndex;
             PageSize = pageSize;
             StartDate = startDate;
