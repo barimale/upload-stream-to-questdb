@@ -29,3 +29,4 @@ node_modules/
 *.snk
 /UploadStreamToQuestDB.Api/logs
 /.vs/UploadStream/CopilotIndices/17.12.38.29086
+/.vs/UploadStream/FileContentIndex
