@@ -1,13 +1,6 @@
 # project specific
 xxl.*
 
-# VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions
-
 # Visual Studio
 # User-specific files
 *.suo
@@ -18,9 +11,6 @@ packages/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-
-# Visual Studio cache/options directory
-.vs/
 
 # .NET Core
 artifacts/
@@ -38,3 +28,4 @@ node_modules/
 
 *.snk
 /UploadStreamToQuestDB.Api/logs
+/.vs/UploadStream/CopilotIndices/17.12.38.29086
