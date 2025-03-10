@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UploadStreamToQuestDB.Application", "UploadStreamToQuestDB.Application\UploadStreamToQuestDB.Application.csproj", "{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UploadStreamToQuestDB.API", "UploadStreamToQuestDB.Api\UploadStreamToQuestDB.API.csproj", "{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UploadStreamToQuestDB.Application", "UploadStreamToQuestDB.Application\UploadStreamToQuestDB.Application.csproj", "{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UploadStreamToQuestDB.Domain", "UploadStreamToQuestDB.Domain\UploadStreamToQuestDB.Domain.csproj", "{FBAA7ECC-64DC-46FA-8D07-2690190B711C}"
 EndProject
