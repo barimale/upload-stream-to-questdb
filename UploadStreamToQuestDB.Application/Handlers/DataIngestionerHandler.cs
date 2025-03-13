@@ -6,16 +6,20 @@ using System.Text;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class DataIngestionerHandler : AbstractHandler, IDataIngestionerHandler {
         private readonly IConfiguration configuration;
         private readonly IQueryIngestionerService _queryIngestionerService;
+        private readonly ILogger<DataIngestionerHandler> _logger;
         public DataIngestionerHandler(
             IConfiguration configuration,
-            IQueryIngestionerService queryIngestionerService) {
+            IQueryIngestionerService queryIngestionerService,
+            ILogger<DataIngestionerHandler> logger) {
             this.configuration = configuration;
             this._queryIngestionerService = queryIngestionerService;
+            this._logger = logger;
         }
         public override async Task<object> Handle(FileModelsInput files) {
             bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
@@ -36,7 +40,21 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                     Delimiter = ";",
                     Comment = '%',
                     Encoding = Encoding.UTF8,
-                    HasHeaderRecord = true
+                    HasHeaderRecord = true,
+                    BadDataFound = context =>
+                    {
+                        _logger.LogError($"Bad data found on row {context.RawRecord}: {context.RawRecord}");
+                    },
+                    MissingFieldFound = (context) =>
+                    {
+                        _logger.LogError($"Field missing at index {context.Index}: {context.HeaderNames}");
+                    },
+                    ReadingExceptionOccurred = ex =>
+                    {
+                        _logger.LogError($"An error occurred while reading the CSV file: {ex.Exception.Message}");
+                        return false;
+                    }
+
                 };
 
                 using (var reader = new StreamReader(file.FilePath))
