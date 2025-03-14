@@ -22,6 +22,9 @@ namespace UploadStreamToQuestDB.API.Controllers {
             this._logger = logger;
         }
 
+        /// <summary>
+        /// Endpoint for getting data from server.
+        /// </summary>
         [HttpGet("data/get")]
         public async Task<IActionResult> GetData(
             [FromHeader(Name = "X-SessionId")] string sessionId,

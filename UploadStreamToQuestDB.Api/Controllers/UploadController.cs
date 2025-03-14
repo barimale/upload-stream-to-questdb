@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using UploadStream;
@@ -25,10 +26,15 @@ namespace UploadStreamToQuestDB.API.Controllers {
             _pipeline = pipeline;
         }
 
+        /// <summary>
+        /// Endpoint for uploading files to the server.
+        /// </summary>
         [HttpPost("stream")]
         [MultipartFormData]
         [DisableFormModelBinding]
         [FileUploadOperation.FileContentType]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> ControllerStream() {
             _logger.LogTrace("Controller upload stream starts.");
             if (!Request.Headers.ContainsKey("X-SessionId") || string.IsNullOrEmpty(Request.Headers["X-SessionId"]))
