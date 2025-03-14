@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Swashbuckle.AspNetCore.Annotations;
 using UploadStream;
 using UploadStreamToQuestDB.API.CustomAttributes;
 using UploadStreamToQuestDB.API.Exceptions;
@@ -26,10 +27,8 @@ namespace UploadStreamToQuestDB.API.Controllers {
             _pipeline = pipeline;
         }
 
-        /// <summary>
-        /// Endpoint for uploading files to the server.
-        /// </summary>
         [HttpPost("stream")]
+        [SwaggerOperation(Summary = "Endpoint for uploading files to the server.")]
         [MultipartFormData]
         [DisableFormModelBinding]
         [FileUploadOperation.FileContentType]

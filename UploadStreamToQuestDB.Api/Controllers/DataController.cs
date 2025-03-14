@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Questdb.Net;
+using Swashbuckle.AspNetCore.Annotations;
 using System.Linq;
 using System.Threading.Tasks;
 using UploadStreamToQuestDB.API.Exceptions;
@@ -22,10 +23,8 @@ namespace UploadStreamToQuestDB.API.Controllers {
             this._logger = logger;
         }
 
-        /// <summary>
-        /// Endpoint for getting data from server.
-        /// </summary>
         [HttpGet("data/get")]
+        [SwaggerOperation(Summary = "Endpoint for getting data from server.")]
         public async Task<IActionResult> GetData(
             [FromHeader(Name = "X-SessionId")] string sessionId,
             [AsParameters] PaginationRequest request) {
