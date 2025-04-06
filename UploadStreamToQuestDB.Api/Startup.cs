@@ -22,7 +22,7 @@ namespace UploadStreamToQuestDB.API {
                    options.CustomizeProblemDetails = ctx =>
                        ctx.ProblemDetails.Extensions.Add("nodeId", Environment.MachineName));
 
-            services.AddMvc();
+            services.AddControllers();
             services.AddQuestDb(Configuration["ReadQuestDbAddress"]);
             services.AddInfrastructureDependencies(Configuration);
             services.AddApplicationDependencies(Configuration);

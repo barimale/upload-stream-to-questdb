@@ -15,9 +15,9 @@
             EndDate = endDate;
         }
 
-        public int PageIndex { get; set; } = 0;
-        public int PageSize { get; set; } = 10;
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        public int? PageIndex { get; set; } = null;
+        public int? PageSize { get; set; } = null;
+        public string? StartDate { get; set; } = null;
+        public string? EndDate { get; set; } = null;
     }
 }
