@@ -1,13 +1,18 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class ExtensionHandler : AbstractHandler, IExtensionHandler {
         private readonly IConfiguration configuration;
+        private readonly ILogger<ExtensionHandler> _logger;
+
         public ExtensionHandler(
-            IConfiguration configuration) {
+            IConfiguration configuration,
+            ILogger<ExtensionHandler> logger) {
             this.configuration = configuration;
+            this._logger = logger;
         }
         public override async Task<object> Handle(FileModelsInput files) {
             var ext = configuration["AllowedExtension"];
@@ -30,7 +35,8 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 } else {
                     input.State.Add(FileModelState.EXTENSION_OK);
                 }
-            } catch (Exception) {
+            } catch (Exception ex) {
+                _logger.LogError(ex, $"Error processing file {input.File.FileName}: {ex.Message}");
                 input.State.Add(FileModelState.EXTENSION_NOT_OK);
             }
 

@@ -39,13 +39,13 @@ namespace UploadStreamToQuestDB.Application {
         }
 
         /// <summary>
-        /// Initializes the upload pipeline with the specified controller.
+        /// Initializes the upload pipeline
         /// </summary>
         /// <param name="controller">The controller to set for the upload handler.</param>
         public void Initialize(Controller controller) {
             uploadHandler.SetController(controller);
             logger.LogTrace("Controller for UploadHandler is set.");
-            logger.LogTrace("Start configure pipeline.");
+            logger.LogTrace("Pipeline configuration starts.");
             uploadHandler
                .SetNext(extensionHandler)
                .SetNext(antivirusHandler)
@@ -56,6 +56,7 @@ namespace UploadStreamToQuestDB.Application {
 
         /// <summary>
         /// Runs the upload pipeline with the specified files.
+        /// Order of handlers is specific.
         /// </summary>
         /// <param name="files">The files to process.</param>
         /// <returns>A task that represents the asynchronous operation.</returns>

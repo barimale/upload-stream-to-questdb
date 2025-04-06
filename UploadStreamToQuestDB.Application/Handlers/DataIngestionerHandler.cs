@@ -7,6 +7,7 @@ using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Collections.Frozen;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class DataIngestionerHandler : AbstractHandler, IDataIngestionerHandler {
@@ -59,15 +60,14 @@ namespace UploadStreamToQuestDB.Application.Handlers {
 
                 using (var reader = new StreamReader(file.FilePath))
                 using (var csv = new CsvReader(reader, config)) {
-                    foreach(var record in csv.GetRecords<WeatherGermany>().ToList()) {
-                        entry.Records.Add(record);
-                    }
+                    entry.Records.AddRange(csv.GetRecords<WeatherGermany>().AsEnumerable());
                 }
 
                 _queryIngestionerService.Execute(entry, files.SessionId);
 
                 file.State.Add(FileModelState.INGESTION_READY);
-            } catch (Exception) {
+            } catch (Exception ex) {
+                _logger.LogError(ex.Message);
                 file.State.Add(FileModelState.INGESTION_FAILED);
             }
         }

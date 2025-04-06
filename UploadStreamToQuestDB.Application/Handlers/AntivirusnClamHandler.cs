@@ -1,5 +1,4 @@
-﻿using AntiVirus;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using nClam;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;

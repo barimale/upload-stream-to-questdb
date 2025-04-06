@@ -1,14 +1,19 @@
 ﻿using AntiVirus;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class AntivirusHandler : AbstractHandler, IAntivirusHandler {
         private readonly IConfiguration configuration;
+        private readonly ILogger<AntivirusHandler> _logger;
 
-        public AntivirusHandler(IConfiguration configuration) {
+        public AntivirusHandler(
+            IConfiguration configuration,
+            ILogger<AntivirusHandler> logger) {
             this.configuration = configuration;
+            this._logger = logger;
         }
         public override async Task<object> Handle(FileModelsInput files) {
             bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
@@ -31,7 +36,8 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                 } else {
                     file.State.Add(FileModelState.ANTIVIRUS_OK);
                 }
-            } catch (Exception) {
+            } catch (Exception ex) {
+                _logger.LogError($"Error scanning file {file.File.FileName}: {ex.Message}");
                 file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);
             }
 
