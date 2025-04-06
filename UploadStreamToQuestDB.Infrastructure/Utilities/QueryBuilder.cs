@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace UploadStreamToQuestDB.Domain.Utilities.QueryUtilities {
     /// <summary>
@@ -28,13 +29,10 @@ namespace UploadStreamToQuestDB.Domain.Utilities.QueryUtilities {
             return this;
         }
 
-        public QueryBuilder WithPageIndex(int? value) {
-            PageIndex = value;
-            return this;
-        }
+        public QueryBuilder WithPageIndexAndCount(int? index, int? count) {
+            PageIndex = index;
+            PageCount = count;
 
-        public QueryBuilder WithPageCount(int? value) {
-            PageCount = value;
             return this;
         }
 
@@ -55,7 +53,8 @@ namespace UploadStreamToQuestDB.Domain.Utilities.QueryUtilities {
             if (PageIndex != null && PageCount != null) {
                 builder.Append(" LIMIT " + PageIndex * PageCount + ", " + (PageIndex * PageCount + PageCount));
             }
-                return builder.ToString();
+
+            return builder.ToString();
         }
     }
 }
