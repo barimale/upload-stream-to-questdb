@@ -27,7 +27,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             try {
                 var clam = new ClamClient("localhost", 3310);
                 // or var clam = new ClamClient(IPAddress.Parse("127.0.0.1"), 3310);
-                var scanResult = clam.ScanFileOnServerAsync(Path.Join(files.FilePath, file.file.FileName)).Result;  //any file you would like!
+                var scanResult = clam.ScanFileOnServerAsync(Path.Join(files.FilePath, file.File.FileName)).Result;  //any file you would like!
                 if (scanResult.Result != ClamScanResults.Clean) {
                     file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);
                 } else {

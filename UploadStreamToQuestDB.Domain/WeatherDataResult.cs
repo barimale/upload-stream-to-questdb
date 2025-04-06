@@ -1,13 +1,13 @@
 ﻿namespace UploadStreamToQuestDB.Domain {
         public class WeatherDataResult {
-            public string StationId { get; set; }
-            public double QN { get; set; }
-            public double PP_10 { get; set; }
-            public double TT_10 { get; set; }
-            public double TM5_10 { get; set; }
-            public double RF_10 { get; set; }
-            public double TD_10 { get; set; }
-            public DateTime Timestamp { get; set; }
+            public required string StationId { get; init; }
+            public required double QN { get; init; }
+            public required double PP_10 { get; init; }
+            public required double TT_10 { get; init; }
+            public required double TM5_10 { get; init; }
+            public required double RF_10 { get; init; }
+            public required double TD_10 { get; init; }
+            public required DateTime Timestamp { get; init; }
 
         }
 }

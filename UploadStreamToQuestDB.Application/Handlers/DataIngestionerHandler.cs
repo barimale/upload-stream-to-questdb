@@ -59,7 +59,9 @@ namespace UploadStreamToQuestDB.Application.Handlers {
 
                 using (var reader = new StreamReader(file.FilePath))
                 using (var csv = new CsvReader(reader, config)) {
-                    entry.records = csv.GetRecords<WeatherGermany>().ToList();
+                    foreach(var record in csv.GetRecords<WeatherGermany>().ToList()) {
+                        entry.Records.Add(record);
+                    }
                 }
 
                 _queryIngestionerService.Execute(entry, files.SessionId);

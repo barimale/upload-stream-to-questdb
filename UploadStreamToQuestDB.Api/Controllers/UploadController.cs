@@ -69,11 +69,11 @@ namespace UploadStreamToQuestDB.API.Controllers {
 
                     return new {
                         state,
-                        x.file.Name,
-                        x.file.FileName,
-                        x.file.ContentDisposition,
-                        x.file.ContentType,
-                        x.file.Length
+                        x.File.Name,
+                        x.File.FileName,
+                        x.File.ContentDisposition,
+                        x.File.ContentType,
+                        x.File.Length
                     };
                 })
             });

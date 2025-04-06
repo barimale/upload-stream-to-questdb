@@ -32,7 +32,7 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
             using var sender = Sender.New($"http::addr={this.address}:{this.port};{this.settings}");
             sender.Transaction(sessionId);
             try {
-                foreach (var p in file.records) {
+                foreach (var p in file.Records) {
                     var parsedDate = DateTimeUtility.yyyyMMddHHmmToDate(p.MessDatum);
 
                     sender

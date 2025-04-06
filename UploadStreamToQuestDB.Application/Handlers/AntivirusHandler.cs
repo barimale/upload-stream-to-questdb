@@ -25,7 +25,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         private void Execute(FileModelsInput files, FileModel file) {
             try {
                 var scanner = new Scanner();
-                var result = scanner.ScanAndClean(Path.Join(files.FilePath, file.file.FileName));
+                var result = scanner.ScanAndClean(Path.Join(files.FilePath, file.File.FileName));
                 if (result != ScanResult.VirusNotFound) {
                     file.State.Add(FileModelState.ANTIVIRUS_NOT_OK);
                 } else {
