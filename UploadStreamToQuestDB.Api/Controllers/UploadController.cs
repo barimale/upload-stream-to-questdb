@@ -14,12 +14,20 @@ using UploadStreamToQuestDB.Application;
 using UploadStreamToQuestDB.Domain;
 
 namespace UploadStreamToQuestDB.API.Controllers {
-
+    /// <summary>
+    /// Controller for handling file upload requests.
+    /// </summary>
     [Route("api")]
     [Produces("application/json")]
     public class UploadController : Controller {
         private readonly ILogger<UploadController> _logger;
         private readonly IUploadPipeline _pipeline;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UploadController"/> class.
+        /// </summary>
+        /// <param name="logger">The logger.</param>
+        /// <param name="pipeline">The upload pipeline.</param>
         public UploadController(
             ILogger<UploadController> logger,
             IUploadPipeline pipeline) {
@@ -27,6 +35,10 @@ namespace UploadStreamToQuestDB.API.Controllers {
             _pipeline = pipeline;
         }
 
+        /// <summary>
+        /// Endpoint for uploading files to the server.
+        /// </summary>
+        /// <returns>An <see cref="IActionResult"/> containing the upload result.</returns>
         [HttpPost("stream")]
         [SwaggerOperation(Summary = "Endpoint for uploading files to the server.")]
         [MultipartFormData]

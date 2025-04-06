@@ -57,7 +57,7 @@ namespace UploadStreamToQuestDB.API.SwaggerFilters {
         /// </summary>
         [AttributeUsage(AttributeTargets.Method)]
         public class FileContentType : Attribute {
-
+            // intentionally left blank
         }
     }
 }
