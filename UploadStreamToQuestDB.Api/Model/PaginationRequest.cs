@@ -1,23 +1,45 @@
 ﻿namespace UploadStreamToQuestDB.API.Model {
+    /// <summary>
+    /// Represents a pagination request with page index, page size, and date range.
+    /// </summary>
     public class PaginationRequest {
-        public PaginationRequest() {
-            // intentionally left blank
-        }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PaginationRequest"/> class.
+        /// </summary>
+        public PaginationRequest() { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PaginationRequest"/> class with specified parameters.
+        /// </summary>
+        /// <param name="pageIndex">The page index.</param>
+        /// <param name="pageSize">The page size.</param>
+        /// <param name="startDate">The start date.</param>
+        /// <param name="endDate">The end date.</param>
         public PaginationRequest(
-            int pageIndex,
-            int pageSize,
-            string startDate,
-            string endDate) {
-            PageIndex = pageIndex;
-            PageSize = pageSize;
-            StartDate = startDate;
-            EndDate = endDate;
-        }
+            int? pageIndex,
+            int? pageSize,
+            string? startDate,
+            string? endDate) =>
+            (PageIndex, PageSize, StartDate, EndDate) = (pageIndex, pageSize, startDate, endDate);
 
-        public int? PageIndex { get; set; } = null;
-        public int? PageSize { get; set; } = null;
-        public string? StartDate { get; set; } = null;
-        public string? EndDate { get; set; } = null;
+        /// <summary>
+        /// Gets or sets the page index.
+        /// </summary>
+        public int? PageIndex { get; set; }
+
+        /// <summary>
+        /// Gets or sets the page size.
+        /// </summary>
+        public int? PageSize { get; set; }
+
+        /// <summary>
+        /// Gets or sets the start date.
+        /// </summary>
+        public string? StartDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the end date.
+        /// </summary>
+        public string? EndDate { get; set; }
     }
 }
