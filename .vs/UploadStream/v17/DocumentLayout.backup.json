@@ -7,6 +7,14 @@
       "RelativeMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|solutionrelative:uploadstreamtoquestdb.api\\model\\paginationrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|r:\\upload-stream-to-questdb\\uploadstreamtoquestdb.api\\swaggerfilters\\fileuploadoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|solutionrelative:uploadstreamtoquestdb.api\\swaggerfilters\\fileuploadoperation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|r:\\upload-stream-to-questdb\\uploadstreamtoquestdb.api\\swaggerfilters\\addcustomheaderparameter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|solutionrelative:uploadstreamtoquestdb.api\\swaggerfilters\\addcustomheaderparameter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|r:\\upload-stream-to-questdb\\uploadstreamtoquestdb.api\\exceptions\\xsessionidexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|solutionrelative:uploadstreamtoquestdb.api\\exceptions\\xsessionidexception.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -30,11 +38,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FileUploadOperation.cs",
+              "DocumentMoniker": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\SwaggerFilters\\FileUploadOperation.cs",
+              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\SwaggerFilters\\FileUploadOperation.cs",
+              "ToolTip": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\SwaggerFilters\\FileUploadOperation.cs",
+              "RelativeToolTip": "UploadStreamToQuestDB.Api\\SwaggerFilters\\FileUploadOperation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-13T13:53:32.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AddCustomHeaderParameter.cs",
+              "DocumentMoniker": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\SwaggerFilters\\AddCustomHeaderParameter.cs",
+              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\SwaggerFilters\\AddCustomHeaderParameter.cs",
+              "ToolTip": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\SwaggerFilters\\AddCustomHeaderParameter.cs",
+              "RelativeToolTip": "UploadStreamToQuestDB.Api\\SwaggerFilters\\AddCustomHeaderParameter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-13T13:53:13.076Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -44,14 +78,14 @@
               "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\Model\\PaginationRequest.cs",
               "ToolTip": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\Model\\PaginationRequest.cs",
               "RelativeToolTip": "UploadStreamToQuestDB.Api\\Model\\PaginationRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwCkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-13T13:51:46.809Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "XSessionIdException.cs",
               "DocumentMoniker": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\Exceptions\\XSessionIdException.cs",
               "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\Exceptions\\XSessionIdException.cs",
@@ -64,7 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "MultipartFormDataAttribute.cs",
               "DocumentMoniker": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\CustomAttributes\\MultipartFormDataAttribute.cs",
               "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\CustomAttributes\\MultipartFormDataAttribute.cs",
@@ -77,7 +111,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "UploadController.cs",
               "DocumentMoniker": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\Controllers\\UploadController.cs",
               "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\Controllers\\UploadController.cs",
@@ -90,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "DataController.cs",
               "DocumentMoniker": "R:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\Controllers\\DataController.cs",
               "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\Controllers\\DataController.cs",
