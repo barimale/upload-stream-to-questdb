@@ -76,7 +76,7 @@ namespace UploadStreamToQuestDB.API.Controllers {
             var query = new QueryBuilder()
                 .WithSessionId(sessionId)
                 .WithDateRange(request.StartDate, request.EndDate)
-                .WithPageIndexAndCount(request.PageIndex, request.PageSize)
+                .WithPageIndexAndSize(request.PageIndex, request.PageSize)
                 .Build();
 
             return query;

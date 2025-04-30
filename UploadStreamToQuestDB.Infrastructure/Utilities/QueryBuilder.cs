@@ -29,7 +29,7 @@ namespace UploadStreamToQuestDB.Domain.Utilities.QueryUtilities {
             return this;
         }
 
-        public QueryBuilder WithPageIndexAndCount(int? index, int? count) {
+        public QueryBuilder WithPageIndexAndSize(int? index, int? count) {
             PageIndex = index;
             PageCount = count;
 
