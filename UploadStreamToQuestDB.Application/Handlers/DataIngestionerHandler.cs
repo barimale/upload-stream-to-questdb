@@ -25,9 +25,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
         public override async Task<object> Handle(FileModelsInput files) {
             bool isStepActive = bool.Parse(configuration["AntivirusActive"]);
 
-            Parallel.ForEach(files.Where(p => (
-                isStepActive && p.State.Contains(FileModelState.ANTIVIRUS_OK))
-                || (isStepActive == false && p.State.Contains(FileModelState.EXTENSION_OK))), (file) => {
+            Parallel.ForEach(files.ToDataIngestionHandler(isStepActive), (file) => {
                     Execute(files, file);
                 });
 

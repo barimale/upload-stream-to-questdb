@@ -20,7 +20,7 @@ namespace UploadStreamToQuestDB.Application.Handlers {
             if (isStepActive == false)
                 return base.Handle(files);
 
-            Parallel.ForEach(files.Where(p => p.State.Contains(FileModelState.EXTENSION_OK)), file => {
+            Parallel.ForEach(files.ToAntivirusHandler(), file => {
                 Execute(files, file);
             });
 
