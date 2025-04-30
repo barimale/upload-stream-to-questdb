@@ -7,7 +7,6 @@ using UploadStreamToQuestDB.Application.Handlers.Abstraction;
 using UploadStreamToQuestDB.Domain;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using System.Collections.Frozen;
 
 namespace UploadStreamToQuestDB.Application.Handlers {
     public class DataIngestionerHandler : AbstractHandler, IDataIngestionerHandler {
