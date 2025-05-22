@@ -14,7 +14,6 @@ packages/
 
 # .NET Core
 artifacts/
-**/Properties/launchSettings.json
 
 # Visual Studio profiler
 *.psess
