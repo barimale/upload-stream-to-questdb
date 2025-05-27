@@ -1,13 +1,13 @@
 {
   "profiles": {
-    "UploadStreamToQuestDB.API": {
+    "https": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:53653;http://localhost:53654"
+      "applicationUrl": "https://localhost:53653"
     },
     "http": {
       "commandName": "Project",
