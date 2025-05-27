@@ -9,6 +9,15 @@
       },
       "applicationUrl": "https://localhost:53653;http://localhost:53654"
     },
+    "http": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:53654"
+    },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,

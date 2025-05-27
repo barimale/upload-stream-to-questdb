@@ -53,6 +53,9 @@ namespace UploadStreamToQuestDB.API {
                 endpoints.MapControllers();
             });
 
+            app.UseHsts();
+            app.UseHttpsRedirection();
+
             var builder = WebApplication.CreateBuilder();
             builder.Host.UseSerilog();
         }

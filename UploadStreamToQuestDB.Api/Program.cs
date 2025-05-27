@@ -10,9 +10,10 @@ namespace UploadStreamToQuestDB.API {
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                .UseKestrel(options => {
-                    options.Limits.MaxRequestBodySize = long.MaxValue;
-                })
+                //.UseKestrel(options => {
+                //    options.Limits.MaxRequestBodySize = long.MaxValue;
+                //})
+                .UseIISIntegration()
                 .Build();
     }
 }
