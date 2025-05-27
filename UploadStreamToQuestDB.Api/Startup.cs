@@ -49,6 +49,7 @@ namespace UploadStreamToQuestDB.API {
             app.UseSwagger();
             app.UseSwaggerUI();
 
+            app.UseRouting();
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
             });
