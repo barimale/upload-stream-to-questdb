@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using System.Security.Authentication;
 
 namespace UploadStreamToQuestDB.API {
     public class Program {
@@ -10,10 +11,10 @@ namespace UploadStreamToQuestDB.API {
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                //.UseKestrel(options => {
-                //    options.Limits.MaxRequestBodySize = long.MaxValue;
-                //})
                 .UseIISIntegration()
+                .UseKestrel(options => {
+                    options.Limits.MaxRequestBodySize = long.MaxValue;
+                })
                 .Build();
     }
 }
