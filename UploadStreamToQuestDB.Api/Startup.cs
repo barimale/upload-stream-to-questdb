@@ -6,7 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Questdb.Net;
 using Serilog;
 using System;
+using UploadStreamToQuestDB.API.Middlewares.GlobalExceptions.Handler;
 using UploadStreamToQuestDB.API.SwaggerFilters;
+using UploadStreamToQuestDB.Application;
 using UploadStreamToQuestDB.Infrastructure;
 
 namespace UploadStreamToQuestDB.API {
@@ -21,6 +23,7 @@ namespace UploadStreamToQuestDB.API {
             services.AddProblemDetails(options =>
                    options.CustomizeProblemDetails = ctx =>
                        ctx.ProblemDetails.Extensions.Add("nodeId", Environment.MachineName));
+            services.AddExceptionHandler<GlobalExceptionHandler>();
 
             services.AddControllers();
             services.AddQuestDb(Configuration["ReadQuestDbAddress"]);
@@ -44,6 +47,8 @@ namespace UploadStreamToQuestDB.API {
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
+            app.UseExceptionHandler();
+
             app.UseRouting();
 
             app.UseSwagger();

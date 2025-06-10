@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using UploadStreamToQuestDB.API.Exceptions;
 using UploadStreamToQuestDB.API.Model;
 using UploadStreamToQuestDB.Domain;
-using UploadStreamToQuestDB.Domain.Utilities.QueryUtilities;
+using UploadStreamToQuestDB.Infrastructure.Utilities;
 
 namespace UploadStreamToQuestDB.API.Controllers {
     /// <summary>

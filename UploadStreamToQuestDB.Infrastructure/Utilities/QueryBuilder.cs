@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json.Linq;
 using System.Text;
+using UploadStreamToQuestDB.Domain.Utilities;
 
-namespace UploadStreamToQuestDB.Domain.Utilities.QueryUtilities {
+namespace UploadStreamToQuestDB.Infrastructure.Utilities {
     /// <summary>
     /// Builder class for constructing SQL queries for QuestDB.
     /// </summary>

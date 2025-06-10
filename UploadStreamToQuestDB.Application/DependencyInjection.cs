@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using UploadStreamToQuestDB.Application;
 using UploadStreamToQuestDB.Application.Handlers;
 
-namespace UploadStreamToQuestDB.Infrastructure {
+namespace UploadStreamToQuestDB.Application {
     public static class DependencyInjection {
         public static IServiceCollection AddApplicationDependencies
             (this IServiceCollection services, IConfiguration configuration) {
