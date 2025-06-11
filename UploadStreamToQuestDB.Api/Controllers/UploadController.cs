@@ -73,10 +73,15 @@ namespace UploadStreamToQuestDB.API.Controllers {
             _logger.LogTrace($"Model is valid.");
 
             _logger.LogTrace("Controller upload stream is ended.");
-            return Ok(new {
-                files.SessionId,
-                files.FilePath,
-                Files = files.Select(x => {
+            if (files.HasErrors) {
+                _logger.LogError("There are errors in the uploaded files.");
+                var problem = new ProblemDetails {
+                    Title = files.SessionId,
+                    Detail = files.FilePath,
+                    Status = 500
+                };
+
+                problem.Extensions.Add("Errors", files.Select(x => {
                     var state = x.GetState();
 
                     return new {
@@ -87,8 +92,27 @@ namespace UploadStreamToQuestDB.API.Controllers {
                         x.File.ContentType,
                         x.File.Length
                     };
-                })
-            });
+                }));
+
+                return BadRequest(problem);
+            } else {
+                return Ok(new {
+                    files.SessionId,
+                    files.FilePath,
+                    Files = files.Select(x => {
+                        var state = x.GetState();
+
+                        return new {
+                            state,
+                            x.File.Name,
+                            x.File.FileName,
+                            x.File.ContentDisposition,
+                            x.File.ContentType,
+                            x.File.Length
+                        };
+                    })
+                });
+            }
         }
     }
 }
