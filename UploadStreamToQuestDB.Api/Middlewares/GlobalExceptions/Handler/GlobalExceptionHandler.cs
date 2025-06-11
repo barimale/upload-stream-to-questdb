@@ -61,6 +61,7 @@ public class GlobalExceptionHandler
         };
 
         problemDetails.Extensions.Add("traceId", context.TraceIdentifier);
+        problemDetails.Extensions.Add("nodeId", Environment.MachineName);
 
         if (exception is ValidationException validationException)
         {
