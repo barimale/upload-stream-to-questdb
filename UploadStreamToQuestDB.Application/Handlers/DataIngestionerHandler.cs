@@ -52,7 +52,6 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                         _logger.LogError($"An error occurred while reading the CSV file: {ex.Exception.Message}");
                         return false;
                     }
-
                 };
 
                 using (var reader = new StreamReader(file.FilePath))
