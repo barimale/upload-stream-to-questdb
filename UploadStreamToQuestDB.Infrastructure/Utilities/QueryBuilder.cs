@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using System.Text;
+﻿using System.Text;
 using UploadStreamToQuestDB.Domain.Utilities;
 
 namespace UploadStreamToQuestDB.Infrastructure.Utilities {
