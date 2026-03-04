@@ -28,6 +28,7 @@ namespace UploadStreamToQuestDB.Application.Handlers.Abstraction {
                 return _nextHandler.Handle(files);
             } else {
                 return null;
+                return Task.FromResult<object>(null);
             }
         }
     }
