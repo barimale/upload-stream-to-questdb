@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Questdb.Net;
 using Serilog;
 using System;
-using UploadStreamToQuestDB.API.Middlewares.GlobalExceptions.Handler;
+using UploadStreamToQuestDB.API.Middlewares.Handler;
 using UploadStreamToQuestDB.API.SwaggerFilters;
 using UploadStreamToQuestDB.Application;
 using UploadStreamToQuestDB.Infrastructure;

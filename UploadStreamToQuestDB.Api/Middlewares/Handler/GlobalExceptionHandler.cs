@@ -6,8 +6,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using UploadStreamToQuestDB.API.Middlewares.GlobalExceptions;
 
-namespace UploadStreamToQuestDB.API.Middlewares.GlobalExceptions.Handler;
+namespace UploadStreamToQuestDB.API.Middlewares.Handler;
 public class GlobalExceptionHandler
     (ILogger<GlobalExceptionHandler> logger)
     : IExceptionHandler
