@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "S:\\upload-stream-to-questdb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.application\\handlers\\abstraction\\abstracthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|solutionrelative:uploadstreamtoquestdb.application\\handlers\\abstraction\\abstracthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{187C7EB1-1936-4E34-A0F6-7D974B39BE47}|UploadStreamToQuestDB.Infrastructure\\UploadStreamToQuestDB.Infrastructure.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.infrastructure\\services\\queryingestionerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{187C7EB1-1936-4E34-A0F6-7D974B39BE47}|UploadStreamToQuestDB.Infrastructure\\UploadStreamToQuestDB.Infrastructure.csproj|solutionrelative:uploadstreamtoquestdb.infrastructure\\services\\queryingestionerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.application\\handlers\\diskcleanuphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|solutionrelative:uploadstreamtoquestdb.application\\handlers\\diskcleanuphandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{187C7EB1-1936-4E34-A0F6-7D974B39BE47}|UploadStreamToQuestDB.Infrastructure\\UploadStreamToQuestDB.Infrastructure.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.infrastructure\\services\\iqueryingestionerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{187C7EB1-1936-4E34-A0F6-7D974B39BE47}|UploadStreamToQuestDB.Infrastructure\\UploadStreamToQuestDB.Infrastructure.csproj|solutionrelative:uploadstreamtoquestdb.infrastructure\\services\\iqueryingestionerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.application\\uploadpipeline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|solutionrelative:uploadstreamtoquestdb.application\\uploadpipeline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.application\\handlers\\dataingestionerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|solutionrelative:uploadstreamtoquestdb.application\\handlers\\dataingestionerhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.application\\handlers\\antivirusnclamhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|solutionrelative:uploadstreamtoquestdb.application\\handlers\\antivirusnclamhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|solutionrelative:uploadstreamtoquestdb.api\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.application\\handlers\\uploadhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|solutionrelative:uploadstreamtoquestdb.application\\handlers\\uploadhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{79B428B2-FAFC-4E01-8E68-C6A6C67B24C7}|UploadStreamToQuestDB.Api\\UploadStreamToQuestDB.API.csproj|solutionrelative:uploadstreamtoquestdb.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|s:\\upload-stream-to-questdb\\uploadstreamtoquestdb.application\\handlers\\iextensionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D9AFEC1-C7D8-42E9-99D6-535B5FF9779B}|UploadStreamToQuestDB.Application\\UploadStreamToQuestDB.Application.csproj|solutionrelative:uploadstreamtoquestdb.application\\handlers\\iextensionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C66E9E0-C690-4554-8592-B3B2589F7DA6}|Solution Items{3C66E9E0-C690-4554-8592-B3B2589F7DA6}|S:\\upload-stream-to-questdb\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{3C66E9E0-C690-4554-8592-B3B2589F7DA6}|Solution Items{3C66E9E0-C690-4554-8592-B3B2589F7DA6}|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +34,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DiskCleanUpHandler.cs",
-              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\DiskCleanUpHandler.cs",
-              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Application\\Handlers\\DiskCleanUpHandler.cs",
-              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\DiskCleanUpHandler.cs",
-              "RelativeToolTip": "UploadStreamToQuestDB.Application\\Handlers\\DiskCleanUpHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T10:44:31.147Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AntivirusnClamHandler.cs",
-              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\AntivirusnClamHandler.cs",
-              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Application\\Handlers\\AntivirusnClamHandler.cs",
-              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\AntivirusnClamHandler.cs",
-              "RelativeToolTip": "UploadStreamToQuestDB.Application\\Handlers\\AntivirusnClamHandler.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAwAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T10:44:01.95Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "UploadHandler.cs",
-              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\UploadHandler.cs",
-              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Application\\Handlers\\UploadHandler.cs",
-              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\UploadHandler.cs",
-              "RelativeToolTip": "UploadStreamToQuestDB.Application\\Handlers\\UploadHandler.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAewBIAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T10:43:55.81Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AbstractHandler.cs",
-              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\Abstraction\\AbstractHandler.cs",
-              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Application\\Handlers\\Abstraction\\AbstractHandler.cs",
-              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\Abstraction\\AbstractHandler.cs",
-              "RelativeToolTip": "UploadStreamToQuestDB.Application\\Handlers\\Abstraction\\AbstractHandler.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Title": "QueryIngestionerService.cs",
+              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Infrastructure\\Services\\QueryIngestionerService.cs",
+              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Infrastructure\\Services\\QueryIngestionerService.cs",
+              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Infrastructure\\Services\\QueryIngestionerService.cs",
+              "RelativeToolTip": "UploadStreamToQuestDB.Infrastructure\\Services\\QueryIngestionerService.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAkwC8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T10:32:31.642Z",
+              "WhenOpened": "2026-05-14T15:25:15.605Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IExtensionHandler.cs",
-              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\IExtensionHandler.cs",
-              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Application\\Handlers\\IExtensionHandler.cs",
-              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\IExtensionHandler.cs",
-              "RelativeToolTip": "UploadStreamToQuestDB.Application\\Handlers\\IExtensionHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "IQueryIngestionerService.cs",
+              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Infrastructure\\Services\\IQueryIngestionerService.cs",
+              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Infrastructure\\Services\\IQueryIngestionerService.cs",
+              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Infrastructure\\Services\\IQueryIngestionerService.cs",
+              "RelativeToolTip": "UploadStreamToQuestDB.Infrastructure\\Services\\IQueryIngestionerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T10:32:25.324Z",
+              "WhenOpened": "2026-05-14T15:21:31.469Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "UploadPipeline.cs",
-              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\UploadPipeline.cs",
-              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Application\\UploadPipeline.cs",
-              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\UploadPipeline.cs",
-              "RelativeToolTip": "UploadStreamToQuestDB.Application\\UploadPipeline.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAQwEAAAAAmAAAAAAAAAA==",
+              "Title": "DataIngestionerHandler.cs",
+              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\DataIngestionerHandler.cs",
+              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Application\\Handlers\\DataIngestionerHandler.cs",
+              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Application\\Handlers\\DataIngestionerHandler.cs",
+              "RelativeToolTip": "UploadStreamToQuestDB.Application\\Handlers\\DataIngestionerHandler.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAYwD4AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T10:32:03.068Z",
+              "WhenOpened": "2026-05-13T18:14:50.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\Startup.cs",
+              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\Startup.cs",
+              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\Startup.cs",
+              "RelativeToolTip": "UploadStreamToQuestDB.Api\\Startup.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAD4vxwAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-13T17:44:21.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "UploadStreamToQuestDB.Api\\appsettings.Development.json",
+              "ToolTip": "S:\\upload-stream-to-questdb\\UploadStreamToQuestDB.Api\\appsettings.Development.json",
+              "RelativeToolTip": "UploadStreamToQuestDB.Api\\appsettings.Development.json",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAwCAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-13T17:44:19.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "README.md",
+              "DocumentMoniker": "S:\\upload-stream-to-questdb\\readme.md",
+              "RelativeDocumentMoniker": "readme.md",
+              "ToolTip": "S:\\upload-stream-to-questdb\\readme.md",
+              "RelativeToolTip": "readme.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-05-13T17:10:08.49Z",
               "EditorCaption": ""
             }
           ]

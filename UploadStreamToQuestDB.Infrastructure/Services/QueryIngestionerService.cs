@@ -1,6 +1,8 @@
-﻿using QuestDB;
+﻿using Npgsql;
+using QuestDB;
 using UploadStreamToQuestDB.Domain;
 using UploadStreamToQuestDB.Domain.Utilities;
+using UploadStreamToQuestDB.Infrastructure.Model.Connection;
 
 namespace UploadStreamToQuestDB.Infrastructure.Services {
     /// <summary>
@@ -47,10 +49,42 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
                 }
 
                 sender.Commit();
-            } catch (Exception) {
+            } catch (Exception ex) {
                 sender.Rollback();
                 throw;
             }
+        }
+
+        public async Task CreateTable(string sessionId, CancellationToken ct = default) {
+            var connectionFactory = new NpgsqlConnectionFactory(
+                host: this.address,
+                port: 8812,
+                username: "admin",
+                password: "quest",
+                database: "qdb"
+            );
+
+            await using var conn = (NpgsqlConnection)await connectionFactory.CreateConnectionAsync(ct);
+
+            await using var cmd = conn.CreateCommand();
+
+            cmd.CommandText = $@"
+                CREATE TABLE IF NOT EXISTS {sessionId} (
+                    timestamp TIMESTAMP,
+                    stationId SYMBOL CAPACITY 500000,
+                    QN DOUBLE,
+                    PP_10 DOUBLE,
+                    TT_10 DOUBLE,
+                    TM5_10 DOUBLE,
+                    RF_10 DOUBLE,
+                    TD_10 DOUBLE
+                ) timestamp (timestamp)
+                  PARTITION BY DAY
+                  WAL
+                "; // DEDUP UPSERT KEYS(timestamp, stationId);
+
+
+            await cmd.ExecuteNonQueryAsync(ct);
         }
     }
 }

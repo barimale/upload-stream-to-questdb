@@ -59,6 +59,8 @@ namespace UploadStreamToQuestDB.Application.Handlers {
                     entry.Records.AddRange(csv.GetRecords<WeatherGermany>().AsEnumerable());
                 }
 
+                // create table here by using Npgsql
+                _queryIngestionerService.CreateTable(files.SessionId);
                 _queryIngestionerService.Execute(entry, files.SessionId);
 
                 file.State.Add(FileModelState.INGESTION_READY);
