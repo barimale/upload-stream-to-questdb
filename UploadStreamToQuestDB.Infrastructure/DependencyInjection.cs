@@ -19,7 +19,9 @@ namespace UploadStreamToQuestDB.Infrastructure {
             new QueryIngestionerService(
                 configuration["QuestDbAddress"],
                 configuration["QuestDbPort"],
-                configuration["QuestDbSettings"]));
+                configuration["QuestDbSettings"],
+                int.Parse(configuration["NpsqlPort"]),
+                configuration["NpsqlDatabase"]));
 
             return services;
         }

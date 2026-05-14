@@ -12,6 +12,8 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
         private readonly string address;
         private readonly string port;
         private readonly string settings;
+        private readonly int npgslPort;
+        private readonly string npgslDatabase;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryIngestionerService"/> class.
@@ -19,10 +21,14 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
         /// <param name="address">The address of the QuestDB server.</param>
         /// <param name="port">The port of the QuestDB server.</param>
         /// <param name="settings">The settings for the QuestDB connection.</param>
-        public QueryIngestionerService(string address, string port, string settings) {
+        /// <param name="npgslPort">The port of the QuestDB server for npgsl.</param>
+        /// <param name="npgslDatabase">The database name for the npgsl connection.</param>
+        public QueryIngestionerService(string address, string port, string settings, int npgslPort, string npgslDatabase) {
             this.address = address;
             this.port = port;
             this.settings = settings;
+            this.npgslPort = npgslPort;
+            this.npgslDatabase = npgslDatabase;
         }
 
         /// <summary>
@@ -56,12 +62,15 @@ namespace UploadStreamToQuestDB.Infrastructure.Services {
         }
 
         public async Task CreateTable(string sessionId, CancellationToken ct = default) {
+            var password = this.settings.Split(";").FirstOrDefault(s => s.StartsWith("password="))?.Split("=").LastOrDefault() ?? "quest";
+            var username = this.settings.Split(";").FirstOrDefault(s => s.StartsWith("username="))?.Split("=").LastOrDefault() ?? "admin";
+
             var connectionFactory = new NpgsqlConnectionFactory(
                 host: this.address,
-                port: 8812,
-                username: "admin",
-                password: "quest",
-                database: "qdb"
+                port: this.npgslPort,
+                username: username,
+                password: password,
+                database: this.npgslDatabase
             );
 
             await using var conn = (NpgsqlConnection)await connectionFactory.CreateConnectionAsync(ct);
